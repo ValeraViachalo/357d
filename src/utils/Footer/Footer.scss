@@ -1,0 +1,37 @@
+.footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+  position: relative;
+
+  .super-text {
+    font-weight: normal;
+  }
+
+  .micro-text {
+    font-size: 0.8vw;
+    line-height: 100%;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 1vw;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__description {
+    width: 15%;
+    text-align: justify;
+  }
+
+  &__logo {
+    width: 6vw;
+    height: 2.3vw;
+  }
+}

@@ -1,0 +1,49 @@
+.home {
+  &_video_bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  &_hero {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_button {
+      position: absolute;
+      bottom: 2vw;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: $c-white;
+    }
+  }
+
+  &__title {
+    color: $c-white;
+  }
+
+  &_section {
+    width: 100vw;
+    height: 200vh;
+  }
+
+  .scroll {
+    &_wrapper {
+      // width: 100vw;
+      padding: 10vw 20vw;
+    }
+
+    &_content {
+      width: 100%;
+      height: 20vw;
+      overflow: auto;
+      border: 1px solid;
+    }
+  }
+}

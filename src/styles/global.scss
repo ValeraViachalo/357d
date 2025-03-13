@@ -1,0 +1,71 @@
+  @import "./utils/typography";
+  @import "./utils/mixins";
+  @import "./utils/variables";
+
+.body {
+  @extend %body-text;
+  background-color: $c-white;
+  color: $c-black;
+  overflow-x: hidden;
+  opacity: 1;
+  ::selection {
+    color: #5f00f9;
+    background: #6929ff1b;
+    mix-blend-mode: difference;
+  }
+}
+
+.html {
+  scrollbar-width: none; /* Firefox 64+ */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: -moz-scrollbars-none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  &::-moz-scrollbar {
+    display: none; /* Firefox до версії 64 */
+  }
+}
+
+@supports (-ms-overflow-style: none) {
+  .html {
+    -ms-overflow-style: none;
+  }
+}
+
+@supports (-ms-overflow-style: none) {
+  .html {
+    overflow: -ms-autohiding-scrollbar;
+  }
+}
+
+.container {
+  padding-right: 4vw;
+  padding-left: 4vw;
+}
+
+.shadow {
+  color: $g-70;
+}
+
+.main {
+  &--loading {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.lazyload-wrapper {
+  height: 100%;
+  width: 100%;
+  
+  img, video {
+    height: 100%;
+    width: 100%;
+  }
+}
