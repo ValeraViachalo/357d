@@ -1,4 +1,4 @@
-const URL_BASE = "http://localhost:3000/data"
+const URL_BASE = "https://www.357d.co/data/"
 
 export const URL_HEADER = URL_BASE + "/header.json"
 export const URL_HOME = URL_BASE + "/home.json"
