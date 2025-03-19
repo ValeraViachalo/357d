@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className="html">
       <body className={`${ppMori.variable} body`}>
       <ScrollProvider scrollBar></ScrollProvider>
-        {/* <Header /> */}
+        <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
