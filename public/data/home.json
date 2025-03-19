@@ -1,6 +1,238 @@
 {
-  "documentTitle": "RTRTS TMPLATE",
-  "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
-  "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
-  "documentImage": "/images/screenshot.png"
+  "en": {
+    "seo": {
+      "documentTitle": "357D",
+      "documentKeywords": "Cyprus real estate, luxury homes, property development, Asgata Village, residential projects, Cyprus property investment, residence permits Cyprus, real estate services, Larnaca property, Cyprus housing, energy efficient homes, modern construction, urban living Cyprus, property management Cyprus, real estate holding company, rental properties Cyprus, real estate agreements",
+      "documentDescription": "Building homes, not just walls We are developing a property that integrates urban principles and prioritizes human needs in a contemporary housing format.",
+      "documentImage": "/images/screenshot2.jpg"
+    },
+    "hero": {
+      "adress": {
+        "text": "Adress we are proud of: <br /> Theklas Lysioti 21 <br /> Lemesos Melas Court 201",
+        "href": "/"
+      },
+      "link": {
+        "text": "Ready to find the one you’ll be proud of?",
+        "href": "#contact"
+      },
+      "slideshow": [
+        "/images/home/hero/1.webp",
+        "/images/home/hero/2.webp",
+        "/images/home/hero/3.webp",
+        "/images/home/hero/4.webp",
+        "/images/home/hero/5.webp",
+        "/images/home/hero/6.webp"
+      ]
+    },
+    "about": {
+      "top": {
+        "title": "We are developing a property with a modern approach to the construction of a new housing format, with the integration of urban principles at the core and human needs at the heart.",
+        "text": "Building homes, not just walls"
+      },
+      "bottom": {
+        "list": [
+          {
+            "text": "3 Projects",
+            "image": "/images/home/about/1.svg"
+          },
+          {
+            "text": "150 Flats",
+            "image": "/images/home/about/2.svg"
+          },
+          {
+            "text": "5 Areas",
+            "image": "/images/home/about/3.svg"
+          }
+        ]
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "list": [
+        {
+          "images": ["/images/home/projects/1-1.jpg", "/images/home/projects/1-2.jpg"],
+          "title": "Asgata Village",
+          "adress": "104 Nahal Griva Digeni, Larnaca 6044, Cyprus",
+          "categories": ["Ready to move in", "Residence"],
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "150m2"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms:",
+              "value": "from 3"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "From",
+            "value": "1050 000"
+          },
+          "button": {
+            "text": "VIEW PROJECT",
+            "href": "/"
+          }
+        },
+        {
+          "images": ["/images/home/projects/2-1.jpg"],
+          "title": "Unit Residence",
+          "adress": "104 Nahal Griva Digeni,  Limassol, Cyprus",
+          "categories": ["In Development", "Residence"],
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "150m2"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms:",
+              "value": "from 3"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "From",
+            "value": "350 000"
+          },
+          "button": {
+            "text": "VIEW PROJECT",
+            "href": "/"
+          }
+        }
+      ],
+      "bottom": {
+        "leftText": "Stay Tuned",
+        "rightText": "More Projects Are Coming Soon!"
+      }
+    },
+    "services": {
+      "title": "Services",
+      "list": [
+        "Agreement Support",
+        "Obtaining a Residence Permit",
+        "Renting out Real Estate",
+        "Holding Company"
+      ],
+      "content": "/images/home/services.jpg"
+    },
+    "whyUs": {
+      "title": "why 357d?",
+      "list": [
+        {
+          "title": "Realty to be Proud of",
+          "text": "We deliver realty to be proud of that fulfills financial, lifestyle, investment, emotional, and long-term prosperity aspirations."
+        },
+        {
+          "title": "Progressive Approach",
+          "text": "Our progressive approach rooted in urban principles, puts sustainability and innovation at the heart of everything we do, allowing us to drive transformation in the established industry.  "
+        },
+        {
+          "title": "Excellence At Every Stage",
+          "text": "We deliver precision and excellence at every stage of the construction by employing stringent project controls to oversee the full process."
+        },
+        {
+          "title": "Transparency and reliability",
+          "text": "We stand by transparency and reliability at every level, providing clear communication, addressing inquiries promptly, and offering continuous support in every aspect of the development lifecycle. "
+        },
+        {
+          "title": "Full-Service Solutions",
+          "text": "We offer full-service real estate solutions tailored to your needs: from strategic planning to investment consultancy, from property development to renovation and value enhancement, from marketing and sales to post-development asset management."
+        }
+      ],
+      "image": "/images/whyUs.jpg"
+    }
+  },
+  "gre": {
+    "seo": {
+      "documentTitle": "357D",
+      "documentKeywords": "ακίνητα Κύπρου, πολυτελείς κατοικίες, ανάπτυξη ακινήτων, Χωριό Ασγάτα, έργα κατοικιών, επενδύσεις ακινήτων Κύπρου, άδειες παραμονής Κύπρου, υπηρεσίες ακινήτων, ακίνητα Λάρνακας, κατοικίες Κύπρου, ενεργειακά αποδοτικά σπίτια, σύγχρονη κατασκευή, αστική διαβίωση Κύπρου, διαχείριση ακινήτων, εταιρεία συμμετοχών ακινήτων, ενοικιαζόμενα ακίνητα, συμφωνίες ακινήτων",
+      "documentDescription": "το ιδανικό πρότυπο για δημιουργική εργασία, με εντυπωσιακά στοιχεία και ρευστή λειτουργικότητα σε nextjs.",
+      "documentImage": "/images/screenshot.png"
+    },
+    "hero": {
+      "adress": {
+        "text": "Διεύθυνση για την οποία είμαστε περήφανοι: <br /> Theklas Lysioti 21 <br /> Lemesos Melas Court 201",
+        "href": "/"
+      },
+      "link": {
+        "text": "Έτοιμοι να βρείτε αυτό για το οποίο θα είστε περήφανοι;",
+        "href": "#contact"
+      },
+      "slideshow": [
+        "/images/home/hero/1.webp",
+        "/images/home/hero/2.webp",
+        "/images/home/hero/3.webp",
+        "/images/home/hero/4.webp",
+        "/images/home/hero/5.webp",
+        "/images/home/hero/6.webp"
+      ]
+    },
+    "about": {
+      "top": {
+        "title": "Αναπτύσσουμε ακίνητα με μια σύγχρονη προσέγγιση στην κατασκευή ενός νέου τύπου κατοικίας, με την ενσωμάτωση αστικών αρχών στον πυρήνα και τις ανθρώπινες ανάγκες στην καρδιά.",
+        "text": "Χτίζουμε σπίτια, όχι μόνο τοίχους"
+      },
+      "bottom": {
+        "list": [
+          {
+            "text": "3 Έργα",
+            "image": "/images/home/about/1.svg"
+          },
+          {
+            "text": "150 Διαμερίσματα",
+            "image": "/images/home/about/2.svg"
+          },
+          {
+            "text": "5 Περιοχές",
+            "image": "/images/home/about/3.svg"
+          }
+        ]
+      }
+    },
+    "projects": {
+      "title": "Έργα",
+      "list": [
+        {
+          "image": "/images/home/projects/1.png",
+          "title": "ΧΩΡΙΟ ΑΣΓΑΤΑ",
+          "list": [
+            "104 Nahal Griva Digeni, <br /> Larnaca 6044, Κύπρος",
+            "Κατοικία | Έτοιμο για μετακόμιση",
+            "Εμβαδόν από: 150 τ.μ. | Υπνοδωμάτια από: 3 | Ενεργειακή Απόδοση: A",
+            "Από €1050 000"
+          ],
+          "button": {
+            "text": "Μάθετε περισσότερα",
+            "href": "/"
+          }
+        }
+      ],
+      "button": {
+        "text": "Προβολή έργων",
+        "href": "/",
+        "length": 6
+      }
+    },
+    "services": {
+      "title": "Βασικές υπηρεσίες",
+      "list": [
+        "Υποστήριξη Συμφωνίας",
+        "Απόκτηση Άδειας Παραμονής",
+        "Ενοικίαση Ακινήτων",
+        "Εταιρεία Συμμετοχών"
+      ]
+    }
+  }
 }

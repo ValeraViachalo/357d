@@ -30,6 +30,16 @@ input,
 button,
 textarea {
   margin: 0;
+
+  &:-webkit-autofill {
+    background-color: transparent;
+    color: white;
+    transition: background-color 5000000s 0s, border-color 0.4s;
+    // -webkit-text-fill-color: @white;
+  }
+  &:-webkit-autofill::first-line {
+    color: black;
+  }
 }
 
 html {
@@ -56,6 +66,12 @@ input[type="reset"] {
 
 img, video {
   object-fit: cover;
+
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 hr {

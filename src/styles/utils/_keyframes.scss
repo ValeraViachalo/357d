@@ -1,0 +1,32 @@
+@keyframes opacityPresence {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes textPresence {
+  0% {
+    clip-path: inset(-20% -20% 100% -20%);
+    transform: translateY(100%);
+  }
+  100% {
+    clip-path: inset(-20% -20% 0% -20%);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes backgroundPresence {
+  0% {
+    opacity: 0;
+    filter: blur(1vw);
+    scale: 1.2;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0vw);
+    scale: 1;
+  }
+}

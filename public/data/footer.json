@@ -1,0 +1,132 @@
+{
+  "en": {
+    "title": "Stay connected at every milestone",
+    "navigation": {
+      "pages": {
+        "title": "Menu",
+        "list": [
+          {
+            "text": "Projects",
+            "href": "/"
+          },
+          {
+            "text": "Properties for Sale",
+            "href": "/"
+          },
+          {
+            "text": "About us",
+            "href": "/about"
+          },
+          {
+            "text": "For clients",
+            "href": "/for-clients"
+          },
+          {
+            "text": "Contact",
+            "href": "/"
+          },
+          {
+            "text": "Careers",
+            "href": "/"
+          }
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "list": [
+          {
+            "text": "Terms of use",
+            "href": "/"
+          },
+          {
+            "text": "Privacy Policy",
+            "href": "/"
+          }
+        ]
+      },
+      "contacts": {
+        "title": "Contacts",
+        "top": [
+          {
+            "text": "357 9016 9445",
+            "href": "tel:35790169445"
+          },
+          {
+            "text": "info@357Doffice.com",
+            "href": "mailto:info@357Doffice.com"
+          }
+        ],
+        "socials": [
+          {
+            "text": "Facebook",
+            "icon": "/images/socials/fb.svg",
+            "href": "https://www.facebook.com/"
+          },
+          {
+            "text": "Instagram",
+            "icon": "/images/socials/ig.svg",
+            "href": "https://www.instagram.com/"
+          },
+          {
+            "text": "LinkedIn",
+            "icon": "/images/socials/linkedin.svg",
+            "href": "https://www.facebook.com/"
+          },
+          {
+            "text": "X",
+            "icon": "/images/socials/x.svg",
+            "href": "https://www.x.com/"
+          }
+        ]
+      },
+      "address": {
+        "title": "Address",
+        "button": {
+          "text": "5 Yunitsman St., <br /> Larnaca 6936025, <br /> Cyprus",
+          "href": "https://maps.app.goo.gl/gHhJcij5konBfM969"
+        }
+      }
+    },
+    "contactForm": {
+      "title": {
+        "top": "We Have",
+        "middle": [
+          "Adress",
+          "Estate",
+          "Investment",
+          "Solutions",
+          "Space",
+          "Quality"
+        ],
+        "bottom": "You Would Be Proud Of"
+      },
+      "contact": {
+        "successTitle": {
+          "text": "Thank you for your request!",
+          "subtext": "We will contact you shortly"
+        },
+        "email": {
+          "text": "Email address *",
+          "errorMessage": "Please enter a valid email address"
+        },
+        "name": {
+          "text": "Name *",
+          "errorMessage": "The field is required"
+        },
+        "phone": {
+          "text": "Phone number *",
+          "errorMessage": "The field is required"
+        },
+        "message": {
+          "text": "How can we help you?"
+        },
+        "button": "Submit"
+      }
+    },
+    "madeBy": {
+      "text": "Made by twid",
+      "href": "https://twid.marketing/en"
+    },
+    "copyright": "Copyright 357D Group. 2025"
+  }
+}

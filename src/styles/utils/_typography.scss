@@ -1,71 +1,71 @@
 @import "./mixins";
 
 %h1 {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 2.8vw;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(65);
   font-style: normal;
-  font-weight: bold;
-  line-height: 142%;
-  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 100%;
   letter-spacing: normal;
 
-  @include mq() {
-    font-size: 9.4vw;
+  @include forMobile {
+    font-size: VW(30, $mobile);
   }
 }
 
 .super-text {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 4.7vw;
-  font-style: bold;
-  line-height: 90%;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(125);
+  line-height: 100%;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: normal;
-
-  @include mq() {
-    font-size: 11vw;
-  }
+  letter-spacing: -0.5vw;
 }
 
 %h2 {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 2vw;
-  font-style: bold;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(30);
   font-weight: normal;
-  line-height: normal;
+  line-height: 105%;
   letter-spacing: normal;
 
-  @include mq() {
-    font-size: 6.4vw;
+  @include forMobile {
+    font-size: VW(20, $mobile);
   }
 }
 
+
 %body-text {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 1.5vw;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(16);
   font-style: normal;
   font-weight: 400;
-  line-height: 140%;
-  letter-spacing: -0.01vw;
+  line-height: 110%;
+  letter-spacing: normal;
   
-  @include mq() {
-    letter-spacing: -0.4vw;
-    font-size: 4.7vw;
+  @include forMobile {
+    font-size: VW(14, $mobile);
+    line-height: 115%;
   }
 }
 
 .small-text {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 1vw;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-  letter-spacing: -0.03vw;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(14);
+  line-height: 105%;
+  
+  @include forMobile {
+    font-size: VW(12, $mobile);
+    line-height: 110%;
+  }
+}
+
+.upperCase {
+  text-transform: uppercase;
 }
 
 %link {
-  @extend %body-text;
-  font-weight: bold;
+  @extend .small-text;
 }
 
 .bold {
@@ -75,16 +75,20 @@
 .body {
   @extend %body-text;
 
+  h1 {
+    @extend %h1;
+  }
 
-h1 {
-  @extend %h1;
-}
+  h2 {
+    @extend %h2;
+  }
 
-h2 {
-  @extend %h2;
-}
+  a {
+    @extend %link;
+  }
 
-a {
-  @extend %link;
-}
+  input, textarea {
+    @extend .small-text;
+    // font: inherit;
+  }
 }

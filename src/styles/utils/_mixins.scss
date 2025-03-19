@@ -44,7 +44,7 @@
   }
 }
 
-@function VW($px, $base: 1920) {
+@function VW($px, $base: 1440) {
   @return calc(($px / $base) * 100vw);
 }
 

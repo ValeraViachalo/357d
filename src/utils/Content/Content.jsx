@@ -1,10 +1,7 @@
-"use client"
+"use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import dynamic from 'next/dynamic';
-
-const LazyLoad = dynamic(() => import('react-lazyload'), { ssr: false });
 
 export const Content = ({ url, refCon, lazy = true, ...rest }) => {
   const [offset, setOffset] = useState(0);
@@ -24,43 +21,21 @@ export const Content = ({ url, refCon, lazy = true, ...rest }) => {
       playsInline
       {...rest}
       ref={refCon && refCon}
+      width="100%"
+      height="100%"
     >
       <source src={url} />
     </motion.video>
   ) : (
-    <motion.img src={url} ref={refCon && refCon} {...rest} />
+    <motion.img src={url} ref={refCon && refCon} width="100%"
+    height="100%" {...rest} />
   );
 
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     return null; // or a placeholder component
   }
 
   return (
-    <>
-      {lazy ? (
-        <LazyLoad offset={offset} {...rest}>
-          {ContentElement}
-        </LazyLoad>
-      ) : (
-        <>
-          {isVideo && (
-            <video
-              loop
-              muted
-              autoPlay
-              webkit-playsinline="true"
-              playsInline
-              {...rest}
-              ref={refCon && refCon}
-            >
-              <source src={url} />
-            </video>
-          )}
-          {isImage && (
-            <Image src={url} ref={refCon && refCon} {...rest} />
-          )}
-        </>
-      )}
-    </>
+    ContentElement
   );
 };

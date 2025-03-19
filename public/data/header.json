@@ -1,14 +1,52 @@
-[
-  {
-    "name": "Home",
-    "link": "/"
+{
+  "en": {
+    "title": "Estate to be proud of",
+    "list": [
+      {
+        "name": "Projects",
+        "link": "/projects"
+      },
+      {
+        "name": "About us",
+        "link": "/about"
+      },
+      {
+        "name": "For clients",
+        "link": "/for-clients"
+      },
+      {
+        "name": "Properties for Sale",
+        "link": "/about"
+      }
+    ],
+    "contact": {
+      "name": "Contact",
+      "href": "#contact"
+    }
   },
-  {
-    "name": "FAQ",
-    "link": "/faq"
-  },
-  {
-    "name": "About",
-    "link": "/about"
+  "gre": {
+    "title": "Κτήμα για να είστε περήφανοι",
+    "list": [
+      {
+        "name": "Έργα",
+        "link": "/"
+      },
+      {
+        "name": "Σχετικά με εμάς",
+        "link": "/about"
+      },
+      {
+        "name": "Για πελάτες",
+        "link": "/for-clients"
+      },
+      {
+        "name": "Ακίνητα προς πώληση",
+        "link": "/"
+      }
+    ],
+    "contact": {
+      "name": "Επικοινωνία",
+      "href": "#contact"
+    }
   }
-]
+}

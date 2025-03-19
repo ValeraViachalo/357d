@@ -1,0 +1,38 @@
+.button {
+  padding: VW(15) 0 VW(12);
+  border: VW(1) solid $c-black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+
+  width: 100%;
+
+  transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
+
+  @include hover {
+    background-color: $c-black;
+    color: $c-white;
+    .button__text {
+      transform: translateY(-1.22em);
+    }
+  }
+
+  &--green-hover {
+    @include hover {
+      color: $green-100;
+    }
+  }
+
+  &__text {
+    text-shadow: 0 1.2em 0;
+    transition: transform 1s $ease-in-out-circ;
+    display: inline-block;
+    &-wrapper {
+      height: 1.1em;
+      overflow-y: hidden;
+      display: inline-block;
+    }
+  }
+}

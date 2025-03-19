@@ -1,0 +1,115 @@
+.contact-form {
+  background-color: $green-100;
+  padding: VW(20);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__logo {
+    width: 100%;
+    height: auto;
+  }
+
+  &__title {
+    width: 60%;
+    margin-top: VW(20);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: VW(10);
+    align-items: flex-start;
+
+    .input {
+      width: 100%;
+      padding: VW(10) 0;
+      border: none;
+      border-bottom: VW(1) solid $g-80;
+      border-radius: 0vw;
+      color: $c-black;
+      background-color: transparent;
+      
+      @include forMobile {
+        padding: VW(10, $mobile) 0;
+        font-size: VW(16, $mobile);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        opacity: 1; /* Standard */
+        color: inherit;
+      }
+
+      &::-webkit-input-placeholder {
+        opacity: 1; /* Chrome, Safari, newer Opera */
+        color: inherit;
+      }
+
+      &::-moz-placeholder {
+        opacity: 1; /* Firefox */
+        color: inherit;
+      }
+
+      &:-ms-input-placeholder {
+        opacity: 1; /* IE 10-11 */
+        color: inherit;
+      }
+
+      &:-moz-placeholder {
+        opacity: 1; /* Firefox (older) */
+        color: inherit;
+      }
+
+      &:default {
+        opacity: 100%;
+      }
+
+      &:-webkit-autofill {
+        opacity: 100%;
+        outline: none;
+      }
+
+      &--error {
+        &:focus {
+          color: $c-black;
+        }
+      }
+
+      &-error-msg {
+        padding-top: VW(5);
+      }
+
+      &-wrapper {
+        width: 100%;
+      }
+
+      &.textarea {
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 1.6em;
+        max-height: VW(130);
+      }
+    }
+
+    .submit-button {
+      width: fit-content;
+      padding: VW(15) VW(35) VW(12);
+      // margin-top: VW(10);
+      text-transform: uppercase;
+
+      &--disabled {
+        opacity: 0.4;
+        pointer-events: none;
+
+        .button__text {
+          transform: none !important;
+        }
+      }
+    }
+
+  }
+}

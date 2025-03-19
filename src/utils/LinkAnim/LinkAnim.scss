@@ -1,0 +1,31 @@
+.link-anim {
+  height: 1.1em;
+  overflow-y: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  
+  @include hover {
+    .link-anim__text {
+      transform: translateY(-1.22em);
+    }
+  }
+
+  &__text {
+    text-shadow: 0 1.2em 0;
+    transition: transform 1s $ease-in-out-circ;
+    display: inline-block;
+    &-wrapper {
+      height: 1.1em;
+      overflow-y: hidden;
+      display: inline-block;
+    }
+  }
+
+  &__icon {
+    height: 1em;
+      width: 1em;
+      // padding-top: 0.1em;
+  }
+}

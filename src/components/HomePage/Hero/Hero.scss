@@ -1,0 +1,42 @@
+.home {
+  .hero {
+    margin-top: VW(60);
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      .hero {
+        &__logo {
+          height: 100%;
+          width: VW(680);
+        }
+        &__title {
+          display: flex;
+          flex-direction: column;
+          gap: VW(5);
+
+          &--line {
+            font-size: VW(85);
+            line-height: 100%;
+          }
+
+          .title-anim {
+            position: absolute;
+            width: 100%;
+            font-size: VW(85);
+            line-height: 100%;
+
+            &__wrapper {
+              display: flex;
+              align-items: flex-start;
+              width: 100%;
+              height: 1.1em;
+              position: relative;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
+}

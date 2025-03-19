@@ -1,0 +1,33 @@
+.why-us {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  .list {
+    row-gap: VW(120);
+
+    .card {
+      grid-column: span 4;
+
+      &:nth-of-type(3),
+      &:nth-of-type(5) {
+        margin-left: VW(20);
+      }
+
+      .title {
+        width: 60%;
+      }
+
+      .text {
+        width: 80%;
+        margin-top: VW(10);
+      }
+    }
+
+    &__image {
+      // width: 33%;
+      grid-column: 5/9;
+      grid-row: 2/2;
+    }
+  }
+}

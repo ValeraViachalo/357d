@@ -1,0 +1,14 @@
+.home {
+  .services {
+    margin-top: VW(10);
+    .list {
+      border-bottom: VW(1) solid $c-black;
+      .services-card {
+        display: flex;
+        gap: VW(40);
+        padding: VW(15) 0 VW(12);
+        border-top: VW(1) solid $c-black;
+      }
+    }
+  }
+}
