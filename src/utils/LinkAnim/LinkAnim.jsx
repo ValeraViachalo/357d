@@ -6,15 +6,7 @@ import Image from 'next/image'
 export const LinkAnim = ({href, classes = "", text, icon = false, secondaryItem = false, ...rest}) => {
   return (
     <Link href={href} {...rest} className={"link-anim " + classes}>
-      {icon && (
-        <Image
-          width={17}
-          height={17}
-          src={icon}
-          alt=""
-          className="link-anim__icon"
-        />
-      )}
+      
       {secondaryItem && (
         <p className="link-anim__text-wrapper" aria-label={text}>
           {secondaryItem}
@@ -27,6 +19,15 @@ export const LinkAnim = ({href, classes = "", text, icon = false, secondaryItem 
           </span>
         ))}
       </p>
+      {icon && (
+        <Image
+          width={17}
+          height={17}
+          src={icon}
+          alt=""
+          className="link-anim__icon"
+        />
+      )}
     </Link>
   )
 }

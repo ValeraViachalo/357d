@@ -1,0 +1,51 @@
+.aviability {
+  .table-header {
+    padding: VW(10) 0 VW(8);
+    border-bottom: $g-50 VW(1) solid;
+    position: sticky;
+    top: VW(45);
+    z-index: 10;
+
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+      background-color: $g-10;
+      position: absolute;
+      z-index: -2;
+      inset: 0 VW(-20);
+    }
+
+    &__item {
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      opacity: 0.4;
+      
+      @include hover {
+        opacity: 1;
+      }
+      
+      &--active {
+        opacity: 1;
+
+        .table-header__item-icon {
+          rotate: 90deg;
+          opacity: 1;
+        }
+      }
+      
+      &--revert {
+        .table-header__item-icon {
+          rotate: -90deg !important;
+        }
+      }
+
+      &-icon {
+        opacity: 0;
+        margin-left: 0.3em;
+        transition: rotate 0.5s $ease-in-out-expo, opacity 0.3s ease;
+      }
+    }
+  }
+}

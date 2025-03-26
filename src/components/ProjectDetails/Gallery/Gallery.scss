@@ -1,0 +1,35 @@
+.project-details {
+  .gallery {
+    padding-top: VW(20);
+    padding-bottom: VW(20);
+    background-color: $g-10;
+
+    .swiper {
+      margin-top: VW(120);
+    }
+
+    &__slide {
+      width: VW(1110);
+      height: VW(720);
+      margin: 0 VW(10);
+    }
+
+    .swiper-pagination {
+      position: relative;
+      margin-top: VW(10);
+
+      &-bullet {
+        width: VW(7);
+        height: VW(7);
+        background-color: $c-black;
+        opacity: 50%;
+        margin: 0 VW(5);
+        transition: opacity 0.3s;
+
+        &-active {
+          opacity: 100%;
+        }
+      }
+    }
+  }
+}

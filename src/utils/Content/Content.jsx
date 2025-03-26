@@ -31,10 +31,6 @@ export const Content = ({ url, refCon, lazy = true, ...rest }) => {
     height="100%" {...rest} />
   );
 
-  if (typeof window === "undefined") {
-    return null; // or a placeholder component
-  }
-
   return (
     ContentElement
   );

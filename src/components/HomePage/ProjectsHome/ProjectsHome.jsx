@@ -51,7 +51,7 @@ const ProjectCard = ({ project }) => {
             <div className="about-item" key={index}>
               <p>
                 <span
-                  className={`about-item__icon about-item__icon--${item.slug}`}
+                  className={`icon icon--${item.slug.split("-")[0]}`}
                 />
                 {item.text}
               </p>

@@ -4,56 +4,31 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
 
   align-items: center;
 
-  color: $c-black;
-  fill: $c-black;
-  stroke: $c-black;
+  // color: $c-black;
+  // fill: $c-black;
+  // stroke: $c-black;
   background-color: #d9d9d934;
-  backdrop-filter: blur(5vw);
+  backdrop-filter: blur(10vw);
   // transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
 
   @include forMobile {
     padding: VW(5, $mobile) VW(10, $mobile);
   }
 
-  &--white {
-    color: $c-white;
-    fill: $c-white;
-    stroke: $c-white;
-
-    .header__logo {
-      filter: invert(1);
-      
-      &--regular {
-        filter: invert(0) !important;
-
-        .header__logo-text {
-          color: $c-black;
-        }
-      }
-    }
-  }
-
-  &--bg {
-    color: $c-black;
-    fill: $c-black;
-    stroke: $c-black;
-
-    background-color: $c-white;
-
-    .header__logo {
-      filter: invert(0);
-    }
-  }
-
   &__logo {
     grid-column: 1/3;
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, opacity 0.3s ease;
     width: VW(115);
     height: VW(25);
+    opacity: 1;
+
+    &--hide {
+      opacity: 0;
+    }
 
     @include forMobile {
       width: VW(100, $mobile);

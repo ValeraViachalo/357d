@@ -1,6 +1,7 @@
 .home {
   .about {
     position: relative;
+    z-index: 1;
     margin-top: VW(20);
 
     @include forMobile {

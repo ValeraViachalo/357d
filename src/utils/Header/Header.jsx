@@ -23,7 +23,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsTopScroll(window.scrollY < 10);
+      setIsTopScroll(window.scrollY < 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -82,6 +82,14 @@ export default function Header() {
             )}
           </AnimatePresence>
         </Link> */}
+        <Link href={isGrePath ? "/gre" : "/"} className={clsx("header__logo", {
+          "header__logo--hide": (path === "/" || path === "/gre") && isTopScroll
+        })}>
+          <div className="header__logo header__logo--regular">
+            <Logo className="header__logo-image" />
+            <p className="header__logo-text">{data?.title}</p>
+          </div>
+        </Link>
         <nav className="header__list">
           {data.list.map((currLink, index) => (
             <LinkAnim
@@ -94,10 +102,7 @@ export default function Header() {
         </nav>
 
         <div className="right">
-          <LinkAnim 
-            href={localeHref}
-            text={isGrePath ? "ENG" : "GRE"}
-          />
+          <LinkAnim href={localeHref} text={isGrePath ? "ENG" : "GRE"} />
           <ContactButton />
         </div>
       </header>
@@ -110,5 +115,5 @@ const ContactButton = () => {
     <Link href="/contact" className="contact-button upperCase">
       Contact →
     </Link>
-  )
-}
+  );
+};

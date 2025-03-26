@@ -3,6 +3,8 @@
     background-color: $green-100;
     padding-top: VW(10);
     margin-top: VW(10);
+    position: relative;
+    z-index: 3;
 
     &-list {
       margin-top: VW(200);
@@ -48,26 +50,6 @@
           &-item {
             &:nth-of-type(1) {
               width: VW(300);
-            }
-
-            &__icon {
-              display: inline-block;
-              width: VW(12);
-              height: VW(12);
-              margin-right: 0.1em;
-              background: no-repeat center/contain;
-
-              &--area-from {
-                background-image: url("/images/home/projects/icons/area-icon.svg");
-              }
-
-              &--bedrooms-from {
-                background-image: url("/images/home/projects/icons/bed-icon.svg");
-              }
-
-              &--energy-efficiency {
-                background-image: url("/images/home/projects/icons/energy-icon.svg");
-              }
             }
           }
         }

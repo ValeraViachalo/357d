@@ -1,0 +1,88 @@
+.title-text {
+  position: relative;
+  margin-top: VW(60);
+  &__text {
+    position: absolute;
+    top: VW(7);
+    width: VW(160);
+
+    @include forMobile {
+      top: VW(5, $mobile);
+      width: VW(82, $mobile);
+      font-size: VW(10, $mobile);
+      line-height: 105%;
+    }
+  }
+
+  &__title {
+    text-indent: VW(246);
+    
+    @include forMobile {
+      text-indent: VW(88, $mobile);
+    }
+  } 
+}
+
+.double-text {
+  margin-top: VW(70);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: VW(50);
+
+  &__wrapper {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: VW(20);
+  }
+}
+
+.features-section {
+  padding-top: VW(140);
+  padding-bottom: VW(20);
+
+  background-color: $g-10;
+
+  &__list {
+    margin-top: VW(20);
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: VW(20);
+
+    .item {
+      width: calc(50% - VW(10));
+
+      display: flex;
+      gap: VW(10);
+      align-items: center;
+      // padding: VW(25) 0 VW(20);
+      border-bottom: VW(1) solid $c-black;
+      cursor: default;
+
+      height: VW(80);
+
+      @include hover {
+        .title {
+          font-size: VW(40);
+          width: auto;
+          min-width: 20%;
+        }
+
+        .text {
+          max-width: 40%;
+        }
+      }
+
+      .title {
+        width: 20%;
+        transition: all 0.3s;
+      }
+
+      .text {
+        max-width: 100%;
+        transition: all 0.3s;
+      }
+    }
+  }
+}

@@ -3,8 +3,8 @@
   overflow-y: hidden;
 
   display: flex;
-  align-items: center;
-  gap: 0.2em;
+  align-items: flex-start;
+  gap: VW(5);
   
   @include hover {
     .link-anim__text {
@@ -24,8 +24,8 @@
   }
 
   &__icon {
-    height: 1em;
-      width: 1em;
+    height: 0.9em;
+    width: 0.9em;
       // padding-top: 0.1em;
   }
 }
