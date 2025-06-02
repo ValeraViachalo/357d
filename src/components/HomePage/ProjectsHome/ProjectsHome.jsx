@@ -13,7 +13,7 @@ export default function ProjectsHome() {
 
   return (
     <section className="projects container">
-      <span className="super-text">{data?.title}</span>
+      <span className="super-text projects__title">{data?.title}</span>
       <div className="projects-list">
         {data?.list.map((project, index) => (
           <ProjectCard project={project} key={index} />
@@ -49,7 +49,7 @@ const ProjectCard = ({ project }) => {
         <div className="about">
           {project?.about.map((item, index) => (
             <div className="about-item" key={index}>
-              <p>
+              <p className="about-item-top">
                 <span
                   className={`icon icon--${item.slug.split("-")[0]}`}
                 />
@@ -65,7 +65,7 @@ const ProjectCard = ({ project }) => {
           </h2>
           <div className="bottom__button">
             <Button
-              greenHover
+              // greenHover
               href={project.button?.href}
               text={project.button?.text}
             />

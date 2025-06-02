@@ -1,13 +1,19 @@
 .home {
   .projects {
-    background-color: $green-100;
-    padding-top: VW(10);
-    margin-top: VW(10);
+    background-color: $g-10;
     position: relative;
     z-index: 3;
+    padding-top: VW(140);
+
+    &__title {
+      // margin: VW(100) auto 0;
+      display: block;
+      text-align: center;
+    }
 
     &-list {
-      margin-top: VW(200);
+      margin-top: VW(100);
+      border-bottom: VW(1) solid $c-black;
 
       .card {
         display: flex;
@@ -15,7 +21,7 @@
         position: relative;
         gap: VW(20);
         padding: VW(20) 0;
-        border-bottom: VW(1) solid $c-black;
+        border-top: VW(1) solid $c-black;
 
         &__content {
           position: sticky;
@@ -36,33 +42,34 @@
 
             &--black {
               background-color: $c-black;
-              color: $green-100;
+              color: $c-white;
+              // color: $green-100;
             }
           }
         }
 
         .about {
           display: flex;
-          justify-content: space-between;
-          gap: VW(20);
-          margin-top: VW(70);
+          // justify-content: space-between;
+          gap: VW(70);
+          margin-top: VW(50);
 
-          &-item {
-            &:nth-of-type(1) {
-              width: VW(300);
-            }
+          &-item-top {
+            opacity: 0.4;
+            padding-bottom: .3em;
           }
         }
 
         .bottom {
           display: flex;
-          align-items: center;
+          // align-items: center;
+          flex-direction: column;
           justify-content: space-between;
-          margin-top: VW(10);
-          padding-top: VW(20);
-          border-top: VW(1) solid $c-black;
+          gap: VW(10);
+          margin-top: VW(60);
+          // border-top: VW(1) solid $c-black;
           &__button {
-            width: VW(310);
+            // width: VW(310);
           }
         }
 

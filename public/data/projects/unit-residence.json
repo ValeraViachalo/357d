@@ -429,19 +429,30 @@
         },
         "interests": {
           "title": "Points of interest",
+          "main": {
+            "image": "/images/projects/unit/hero.png",
+            "position": {
+              "lat": 34.695,
+              "lng": 33.059
+            }
+          },
           "list": [
             {
-              "type": {
-                "text": "Business hub",
-                "slug": "business-hub"
+              "name": "Business hub",
+              "slug": "business-hub",
+              "position": {
+                "lat": 34.69,
+                "lng": 33.062
               },
               "farness": "5-min walk",
               "image": "/images/projects/unit/interest-1.jpg"
             },
             {
-              "type": {
-                "text": "Beach",
-                "slug": "beach"
+              "name": "Beach",
+              "slug": "beach",
+              "position": {
+                "lat": 34.691,
+                "lng": 33.061
               },
               "farness": "10-min drive",
               "image": "/images/projects/unit/interest-2.jpg"

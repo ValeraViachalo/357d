@@ -19,6 +19,10 @@ export const ContactForm = ({ data }) => {
     name: Yup.string().required(data?.contact.name.errorMessage),
     phone: Yup.string().required(data?.contact.phone.errorMessage),
     message: Yup.string(),
+    accept: Yup.boolean().oneOf(
+      [true],
+      data?.contact.acceptError || "You must accept the privacy policy"
+    ),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -52,20 +56,13 @@ export const ContactForm = ({ data }) => {
 
   return (
     <div className="contact-form">
-      <div className="top">
-        <Logo className="contact-form__logo" />
-        <div className="contact-form__title">
-          <h2>{data.title.top}</h2>
-          <AnimTitle titles={data.title.middle} />
-          <h2>{data.title.bottom}</h2>
-        </div>
-      </div>
       <Formik
         initialValues={{
           email: "",
           name: "",
           phone: "",
           message: "",
+          accept: false,
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
@@ -80,6 +77,7 @@ export const ContactForm = ({ data }) => {
                 <p>{data.contact?.successTitle?.subtext}</p>
               </div>
             )}
+            <h2>{data?.topTitle}</h2>
             <Form
               className={clsx("form", {
                 "form--submitted": submitted,
@@ -142,29 +140,87 @@ export const ContactForm = ({ data }) => {
                 />
               </div>
 
-              <button
-                type="submit"
-                className={clsx("submit-button button button--black", {
-                  "submit-button--disabled": !isValid || !dirty,
-                })}
-                disabled={!isValid || !dirty}
-              >
-                <p className="button__text-wrapper">
-                  {data.contact.button.split("").map((word, index) => (
-                    <span
-                      className="button__text"
-                      key={index}
-                      style={{ transitionDelay: `${index * 0.01}s` }}
-                    >
-                      {word !== " " ? word : <>&nbsp;</>}
-                    </span>
-                  ))}
-                </p>
-              </button>
+              <div className="form-bottom">
+                <label htmlFor="accept" className="accept-wrapper">
+                  <Field name="accept">
+                    {({ field, form }) => (
+                      <span
+                        className={clsx("custom-checkbox", {
+                          checked: field.value,
+                          error: form.touched.accept && form.errors.accept,
+                        })}
+                        tabIndex={0}
+                        role="checkbox"
+                        aria-checked={field.value}
+                        onClick={() =>
+                          form.setFieldValue("accept", !field.value)
+                        }
+                        onKeyDown={(e) => {
+                          if (e.key === " " || e.key === "Enter") {
+                            e.preventDefault();
+                            form.setFieldValue("accept", !field.value);
+                          }
+                        }}
+                      >
+                          <svg width="18" height="18" viewBox="0 0 18 18">
+                            <polyline
+                              points="4,10 8,14 14,6"
+                              style={{
+                                fill: "none",
+                                stroke: "#fff",
+                                strokeWidth: 2,
+                              }}
+                            />
+                          </svg>
+                      </span>
+                    )}
+                  </Field>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: data.contact.privacyText.text,
+                    }}
+                    className="accept-text"
+                  />
+                </label>
+                <ErrorMessage
+                  name="accept"
+                  component="p"
+                  className="input-error-msg small-text"
+                />{" "}
+                <button
+                  type="submit"
+                  className={clsx("submit-button button button--black", {
+                    "submit-button--disabled": !isValid || !dirty,
+                  })}
+                  disabled={!isValid || !dirty}
+                >
+                  <p className="button__text-wrapper">
+                    {data.contact.button.split("").map((word, index) => (
+                      <span
+                        className="button__text"
+                        key={index}
+                        style={{ transitionDelay: `${index * 0.01}s` }}
+                      >
+                        {word !== " " ? word : <>&nbsp;</>}
+                      </span>
+                    ))}
+                  </p>
+                </button>
+              </div>
             </Form>
           </div>
         )}
       </Formik>
+      <div className="bottom">
+        <div className="contact-form__title">
+          <p>
+            <span>{data.title.top}</span>
+            <AnimTitle titles={data.title.middle} />
+          </p>
+          <span>{data.title.bottom}</span>
+        </div>
+        <Logo className="contact-form__logo" />
+      </div>
     </div>
   );
 };
@@ -182,7 +238,7 @@ const AnimTitle = ({ titles }) => {
   return (
     <div className="title-anim__wrapper">
       <AnimatePresence mode="popLayout" initial={false}>
-        <motion.h2
+        <motion.span
           className="title-anim"
           key={titles[activeIndex]}
           aria-label={titles[activeIndex]}
@@ -197,7 +253,7 @@ const AnimTitle = ({ titles }) => {
               {currL}
             </motion.span>
           ))}
-        </motion.h2>
+        </motion.span>
       </AnimatePresence>
     </div>
   );

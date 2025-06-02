@@ -1,6 +1,8 @@
 .home {
   .services {
-    margin-top: VW(10);
+    // margin-top: VW(10);
+        overflow: hidden;
+
     .list {
       border-bottom: VW(1) solid $c-black;
       .services-card {
@@ -9,6 +11,12 @@
         padding: VW(15) 0 VW(12);
         border-top: VW(1) solid $c-black;
       }
+    }
+
+    &-content {
+      width: 100%;
+      height: VW(900);
+      overflow: hidden;
     }
   }
 }

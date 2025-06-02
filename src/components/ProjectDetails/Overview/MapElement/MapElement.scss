@@ -1,0 +1,49 @@
+.map-container {
+  width: 100%;
+  height: VW(620);
+
+  .marker {
+    width: 15px;
+    height: 15px;
+    background-color: $c-black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: scale 0.5s $ease-in-out-expo, background-color 0.5s ease;
+
+    @include hover {
+      scale: 1.2;
+    }
+
+    &.active {
+      background-color: $c-black;
+      scale: 1.2;
+    }
+
+    &-wrapper {
+      position: relative;
+
+      .active-marker {
+        // width: VW(100);
+        width: 100px;
+        display: flex;
+        gap: VW(5);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+          // width: VW(50);
+          // height: VW(50);
+          width: 50px;
+          height: 50px;
+        }
+
+        p {
+          // font-size: VW(14);
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

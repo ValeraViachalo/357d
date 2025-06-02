@@ -88,6 +88,7 @@
       }
     },
     "contactForm": {
+      "topTitle": "Let’s Get in Touch",
       "title": {
         "top": "We Have",
         "middle": [
@@ -119,6 +120,9 @@
         },
         "message": {
           "text": "How can we help you?"
+        },
+        "privacyText": {
+          "text": "I give my consent to the processing of a personal data and agree <a href=\"/\">to the terms</a> and <a href=\"/\"> privacy policy </a>"
         },
         "button": "Submit"
       }

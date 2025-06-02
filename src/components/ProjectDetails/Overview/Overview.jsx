@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import "./Overview.scss";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { anim, ProjectsAnim } from "@/lib/helpers/anim";
 import Image from "next/image";
+import MapElement from "./MapElement/MapElement";
 
 export const Overview = ({ data }) => {
   const interests = data?.interests;
   const [activeInterest, setActiveInterest] = useState(interests.list[0]);
+  const mapRef = useRef(null);
+
+  const handleInterestClick = (interest) => {
+    setActiveInterest(interest);
+    
+    // Add this check to prevent errors
+    if (mapRef.current) {
+      try {
+        mapRef.current.handleMarkerClick(interest);
+      } catch (error) {
+        console.error("Error handling interest click:", error);
+      }
+    }
+  };
 
   return (
     <section className="overview">
@@ -25,14 +40,14 @@ export const Overview = ({ data }) => {
                 <div
                   key={index}
                   className={clsx("link__wrapper", {
-                    "link__wrapper--active": activeInterest.type.slug === link.type.slug,
+                    "link__wrapper--active": activeInterest.slug === link.slug,
                   })}
                 >
                   <button
                     className="link"
-                    onClick={() => setActiveInterest(link)}
+                    onClick={() => handleInterestClick(link)}
                   >
-                    {link.type.text}
+                    {link.name}
                   </button>
                   <p className="hover-text">{link?.farness}</p>
                 </div>
@@ -42,15 +57,20 @@ export const Overview = ({ data }) => {
           <div className="interests__content">
             <div className="image__wrapper">
               <AnimatePresence mode="sync" initial={false}>
-                <motion.img className="image" src={activeInterest.image} key={activeInterest.type.slug} {...anim(ProjectsAnim.slideshow)}/>
+                <motion.img
+                  className="image"
+                  src={activeInterest.image}
+                  key={activeInterest.slug}
+                  {...anim(ProjectsAnim.slideshow)}
+                />
               </AnimatePresence>
             </div>
-            <Image
-              src="/images/projects/unit/map.jpg"
-              alt="map"
-              width={600}
-              height={400}
-              className="map"
+            <MapElement
+              ref={mapRef}
+              mainMarker={interests.main}
+              pointsOfInterest={interests.list}
+              activeMarker={activeInterest}
+              setActiveMarker={setActiveInterest}
             />
           </div>
         </div>

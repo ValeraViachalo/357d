@@ -12,7 +12,7 @@ export async function generatePagesMetadata(endpoint, lang = "en") {
     next: { revalidate: 120 },
   }).then((response) => response.json());
 
-  const data = preparedData[lang].seo || fallbackData;
+  const data = preparedData[lang]?.seo || fallbackData;
 
   return {
     title: data.documentTitle,
