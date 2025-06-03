@@ -5,8 +5,9 @@
     z-index: 3;
     padding-top: VW(140);
     padding-bottom: VW(100);
-
+    
     @include forMobile {
+      overflow: hidden;
       padding-top: VW(60, $mobile);
       padding-bottom: VW(10, $mobile);
     }
@@ -38,7 +39,7 @@
           flex-direction: column-reverse;
           padding: VW(20, $mobile) 0;
           gap: VW(10, $mobile);
-          
+
           &:not(:last-of-type) {
             border-bottom: VW(1, $mobile) solid $c-black;
           }
@@ -142,11 +143,19 @@
             @include forMobile {
               flex-direction: row;
               overflow: scroll;
+              width: 110%;
             }
           }
 
           &-item {
             width: 100%;
+
+            @include forMobile {
+              width: 90%;
+              &:last-of-type {
+                padding-right: 10%;
+              }
+            }
           }
         }
       }
