@@ -2,6 +2,10 @@
   .hero {
     margin-top: VW(60);
 
+    @include forMobile {
+      margin-top: VW(120, $mobile);
+    }
+
     .top {
       display: flex;
       justify-content: space-between;
@@ -9,22 +13,42 @@
         &__logo {
           height: 100%;
           width: VW(680);
+
+          @include forMobile {
+            display: none;
+          }
         }
+
         &__title {
           display: flex;
           flex-direction: column;
           gap: VW(5);
+          @include forMobile {
+            font-size: VW(46, $mobile);
+            letter-spacing: VW(-2, $mobile);
+          }
 
           &--line {
-            font-size: VW(85);
+            font-size: VW(92);
             line-height: 100%;
+            letter-spacing: VW(-5);
+
+            @include forMobile {
+              font-size: VW(46, $mobile);
+              letter-spacing: VW(-2, $mobile);
+            }
           }
 
           .title-anim {
             position: absolute;
             width: 100%;
-            font-size: VW(85);
+            font-size: VW(92);
             line-height: 100%;
+
+            @include forMobile {
+              font-size: VW(46, $mobile);
+              letter-spacing: VW(-2, $mobile);
+            }
 
             &__wrapper {
               display: flex;
@@ -33,9 +57,19 @@
               height: 1.1em;
               position: relative;
               overflow: hidden;
+
+              @include forMobile {
+                height: 1em;
+              }
             }
           }
         }
+      }
+    }
+
+    &__video {
+      @include forMobile {
+        aspect-ratio: 3/4;
       }
     }
   }

@@ -52,6 +52,14 @@
   }
 }
 
+[data-only-mobile--flex] {
+  display: none;
+
+  @include forMobile() {
+    display: flex;
+  }
+}
+
 [data-touch-element] {
   display: block;
 

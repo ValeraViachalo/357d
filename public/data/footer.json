@@ -48,18 +48,18 @@
         "title": "Contacts",
         "top": [
           {
-            "text": "357 9016 9445",
+            "text": "+357 9016 9445",
             "href": "tel:35790169445"
           },
           {
-            "text": "info@357Doffice.com",
-            "href": "mailto:info@357Doffice.com"
+            "text": "sales@357d.co",
+            "href": "mailto:sales@357d.co"
           }
         ],
         "socials": [
           {
-            "text": "Facebook",
-            "icon": "/images/socials/fb.svg",
+            "text": "LinkedIn",
+            "icon": "/images/socials/linkedin.svg",
             "href": "https://www.facebook.com/"
           },
           {
@@ -68,13 +68,13 @@
             "href": "https://www.instagram.com/"
           },
           {
-            "text": "LinkedIn",
-            "icon": "/images/socials/linkedin.svg",
+            "text": "whatsApp",
+            "icon": "/images/socials/whatsapp.svg",
             "href": "https://www.facebook.com/"
           },
           {
-            "text": "X",
-            "icon": "/images/socials/x.svg",
+            "text": "telegram",
+            "icon": "/images/socials/telegram.svg",
             "href": "https://www.x.com/"
           }
         ]
@@ -128,7 +128,7 @@
       }
     },
     "madeBy": {
-      "text": "Made by twid",
+      "text": "Made By TWID",
       "href": "https://twid.marketing/en"
     },
     "copyright": "Copyright 357D Group. 2025"

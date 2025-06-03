@@ -1,19 +1,26 @@
 .button {
   padding: VW(15) 0 VW(12);
+  width: 100%;
+  
   border: VW(1) solid $c-black;
+  background-color: $c-black;
+  color: $c-white;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.2em;
 
-  width: 100%;
-
   transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
+  
+  @include forMobile {
+    padding: VW(15, $mobile) 0 VW(12, $mobile);
+  }
 
   @include hover {
-    background-color: $c-black;
-    color: $c-white;
+    color: $c-black;
+    background-color: transparent;
+
     .button__text {
       transform: translateY(-1.22em);
     }

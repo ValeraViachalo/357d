@@ -26,8 +26,7 @@
     },
     "about": {
       "top": {
-        "title": "We are developing a property with a modern approach to the construction of a new housing format, with the integration of urban principles at the core and human needs at the heart.",
-        "text": "Building homes, not just walls"
+        "title": "We aim to redefine urban living in Cyprus by offering high-quality, well-located projects that combine value, design, and long-term investment potential — all with a focus on what truly matters to our clients."
       },
       "bottom": {
         "list": [
@@ -53,7 +52,7 @@
           "images": ["/images/home/projects/1-1.jpg", "/images/home/projects/1-2.jpg"],
           "title": "Asgata Village",
           "adress": "104 Nahal Griva Digeni, Larnaca 6044, Cyprus",
-          "categories": ["Ready to move in", "Residence"],
+          "categories": ["Coming soon", "Residence"],
           "about": [
             {
               "slug": "area-from",
@@ -64,11 +63,6 @@
               "slug": "bedrooms-from",
               "text": "Bedrooms:",
               "value": "from 3"
-            },
-            {
-              "slug": "energy-efficiency",
-              "text": "Energy Efficiency:",
-              "value": "A"
             }
           ],
           "price": {
@@ -76,7 +70,8 @@
             "value": "1050 000"
           },
           "button": {
-            "text": "VIEW PROJECT",
+            "type": "not-available",
+            "text": "More info is coming soon",
             "href": "/"
           }
         },
@@ -95,11 +90,6 @@
               "slug": "bedrooms-from",
               "text": "Bedrooms:",
               "value": "from 3"
-            },
-            {
-              "slug": "energy-efficiency",
-              "text": "Energy Efficiency:",
-              "value": "A"
             }
           ],
           "price": {
@@ -107,6 +97,7 @@
             "value": "350 000"
           },
           "button": {
+            "type": "available",
             "text": "VIEW PROJECT",
             "href": "/"
           }
@@ -158,7 +149,7 @@
     "seo": {
       "documentTitle": "357D",
       "documentKeywords": "ακίνητα Κύπρου, πολυτελείς κατοικίες, ανάπτυξη ακινήτων, Χωριό Ασγάτα, έργα κατοικιών, επενδύσεις ακινήτων Κύπρου, άδειες παραμονής Κύπρου, υπηρεσίες ακινήτων, ακίνητα Λάρνακας, κατοικίες Κύπρου, ενεργειακά αποδοτικά σπίτια, σύγχρονη κατασκευή, αστική διαβίωση Κύπρου, διαχείριση ακινήτων, εταιρεία συμμετοχών ακινήτων, ενοικιαζόμενα ακίνητα, συμφωνίες ακινήτων",
-      "documentDescription": "το ιδανικό πρότυπο για δημιουργική εργασία, με εντυπωσιακά στοιχεία και ρευστή λειτουργικότητα σε nextjs.",
+      "documentDescription": "Χτίζουμε σπίτια, όχι μόνο τοίχους. Αναπτύσσουμε ακίνητα που ενσωματώνουν αστικές αρχές και δίνουν προτεραιότητα στις ανθρώπινες ανάγκες σε ένα σύγχρονο οικιστικό περιβάλλον.",
       "documentImage": "/images/screenshot.png"
     },
     "hero": {
@@ -187,7 +178,7 @@
       "bottom": {
         "list": [
           {
-            "text": "3 Έργα",
+            "text": "4 Έργα",
             "image": "/images/home/about/1.svg"
           },
           {
@@ -195,7 +186,7 @@
             "image": "/images/home/about/2.svg"
           },
           {
-            "text": "5 Περιοχές",
+            "text": "3 Περιοχές",
             "image": "/images/home/about/3.svg"
           }
         ]
@@ -205,24 +196,71 @@
       "title": "Έργα",
       "list": [
         {
-          "image": "/images/home/projects/1.png",
-          "title": "ΧΩΡΙΟ ΑΣΓΑΤΑ",
-          "list": [
-            "104 Nahal Griva Digeni, <br /> Larnaca 6044, Κύπρος",
-            "Κατοικία | Έτοιμο για μετακόμιση",
-            "Εμβαδόν από: 150 τ.μ. | Υπνοδωμάτια από: 3 | Ενεργειακή Απόδοση: A",
-            "Από €1050 000"
+          "images": ["/images/home/projects/1-1.jpg", "/images/home/projects/1-2.jpg"],
+          "title": "Χωριό Ασγάτα",
+          "adress": "104 Nahal Griva Digeni, Larnaca 6044, Κύπρος",
+          "categories": ["Έτοιμο για μετακόμιση", "Κατοικία"],
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Εμβαδόν από:",
+              "value": "150τ.μ."
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Υπνοδωμάτια:",
+              "value": "από 3"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Ενεργειακή Απόδοση:",
+              "value": "A"
+            }
           ],
+          "price": {
+            "text": "Από",
+            "value": "1050 000"
+          },
           "button": {
-            "text": "Μάθετε περισσότερα",
+            "text": "ΠΡΟΒΟΛΗ ΕΡΓΟΥ",
+            "href": "/"
+          }
+        },
+        {
+          "images": ["/images/home/projects/2-1.jpg"],
+          "title": "Unit Residence",
+          "adress": "104 Nahal Griva Digeni, Limassol, Κύπρος",
+          "categories": ["Υπό Ανάπτυξη", "Κατοικία"],
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Εμβαδόν από:",
+              "value": "150τ.μ."
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Υπνοδωμάτια:",
+              "value": "από 3"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Ενεργειακή Απόδοση:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Από",
+            "value": "350 000"
+          },
+          "button": {
+            "text": "ΠΡΟΒΟΛΗ ΕΡΓΟΥ",
             "href": "/"
           }
         }
       ],
-      "button": {
-        "text": "Προβολή έργων",
-        "href": "/",
-        "length": 6
+      "bottom": {
+        "leftText": "Μείνετε συντονισμένοι",
+        "rightText": "Περισσότερα έργα έρχονται σύντομα!"
       }
     },
     "services": {
@@ -232,7 +270,34 @@
         "Απόκτηση Άδειας Παραμονής",
         "Ενοικίαση Ακινήτων",
         "Εταιρεία Συμμετοχών"
-      ]
+      ],
+      "content": "/images/home/services.jpg"
+    },
+    "whyUs": {
+      "title": "γιατί 357d;",
+      "list": [
+        {
+          "title": "Ακίνητα για να είστε περήφανοι",
+          "text": "Παρέχουμε ακίνητα για τα οποία μπορείτε να είστε περήφανοι, που καλύπτουν οικονομικές, επενδυτικές, συναισθηματικές και μακροπρόθεσμες ανάγκες ευημερίας."
+        },
+        {
+          "title": "Προοδευτική Προσέγγιση",
+          "text": "Η προοδευτική μας προσέγγιση, βασισμένη σε αστικές αρχές, τοποθετεί τη βιωσιμότητα και την καινοτομία στο επίκεντρο κάθε μας ενέργειας, επιτρέποντάς μας να οδηγούμε τον μετασχηματισμό στον καθιερωμένο κλάδο."
+        },
+        {
+          "title": "Αριστεία σε κάθε στάδιο",
+          "text": "Παρέχουμε ακρίβεια και αριστεία σε κάθε στάδιο της κατασκευής, εφαρμόζοντας αυστηρούς ελέγχους για την επίβλεψη όλης της διαδικασίας."
+        },
+        {
+          "title": "Διαφάνεια και αξιοπιστία",
+          "text": "Υποστηρίζουμε τη διαφάνεια και την αξιοπιστία σε κάθε επίπεδο, παρέχοντας σαφή επικοινωνία, άμεση ανταπόκριση και συνεχή υποστήριξη σε κάθε πτυχή του κύκλου ανάπτυξης."
+        },
+        {
+          "title": "Ολοκληρωμένες λύσεις",
+          "text": "Προσφέρουμε ολοκληρωμένες λύσεις ακινήτων προσαρμοσμένες στις ανάγκες σας: από στρατηγικό σχεδιασμό έως επενδυτική συμβουλευτική, από ανάπτυξη ακινήτων έως ανακαίνιση και αύξηση αξίας, από μάρκετινγκ και πωλήσεις έως διαχείριση περιουσιακών στοιχείων μετά την ανάπτυξη."
+        }
+      ],
+      "image": "/images/whyUs.jpg"
     }
   }
 }

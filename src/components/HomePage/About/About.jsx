@@ -23,7 +23,7 @@ export default function AboutHome() {
   return (
     <section className="about container" ref={aboutRef}>
       <motion.div className="top" style={{ y: ySection }}>
-        <p className="about__text">{top.text}</p>
+        {/* <p className="about__text">{top.text}</p> */}
         {/* <h1 className="about__title">
           <ParagraphAnim text={top.title} isActive={true}/>
         </h1> */}

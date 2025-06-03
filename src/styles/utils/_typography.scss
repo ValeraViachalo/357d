@@ -9,17 +9,23 @@
   letter-spacing: normal;
 
   @include forMobile {
-    font-size: VW(30, $mobile);
+    font-size: VW(35, $mobile);
+    line-height: 110%;
   }
 }
 
 .super-text {
   font-family: var(--pp-mori), sans-serif;
-  font-size: VW(125);
+  font-size: VW(140);
   line-height: 100%;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.5vw;
+
+  @include forMobile {
+    font-size: VW(70, $mobile);
+    letter-spacing: VW(-4.2, $mobile);
+  }
 }
 
 %h2 {
@@ -30,22 +36,20 @@
   letter-spacing: normal;
 
   @include forMobile {
-    font-size: VW(20, $mobile);
+    font-size: VW(25, $mobile);
   }
 }
-
 
 %body-text {
   font-family: var(--pp-mori), sans-serif;
   font-size: VW(16);
   font-style: normal;
   font-weight: 400;
-  line-height: 110%;
+  line-height: 130%;
   letter-spacing: normal;
-  
+
   @include forMobile {
     font-size: VW(14, $mobile);
-    line-height: 115%;
   }
 }
 
@@ -53,9 +57,9 @@
   font-family: var(--pp-mori), sans-serif;
   font-size: VW(14);
   line-height: 105%;
-  
+
   @include forMobile {
-    font-size: VW(12, $mobile);
+    font-size: VW(14, $mobile);
     line-height: 110%;
   }
 }
@@ -87,7 +91,8 @@
     @extend %link;
   }
 
-  input, textarea {
+  input,
+  textarea {
     @extend .small-text;
     // font: inherit;
   }

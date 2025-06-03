@@ -7,8 +7,12 @@
     @include forMobile {
       margin-top: VW(10, $mobile);
     }
-  
+
     .top {
+      @include forMobile {
+        transform: none !important;
+      }
+
       .about {
         &__text {
           position: absolute;
@@ -22,23 +26,30 @@
             line-height: 105%;
           }
         }
-  
+
         &__title {
           text-indent: VW(246);
-          
+
           @include forMobile {
-            text-indent: VW(88, $mobile);
+            text-indent: VW(62, $mobile);
+            font-size: VW(25, $mobile);
           }
 
           .wrapper:nth-of-type(1) {
             text-indent: VW(246);
           }
-        } 
+        }
       }
     }
-  
+
     .bottom {
       display: flex;
+
+      @include forMobile {
+        flex-direction: column;
+        margin-top: VW(40, $mobile);
+        transform: none !important;
+      }
 
       .card {
         padding-left: VW(20);
@@ -47,7 +58,16 @@
         display: flex;
         align-items: flex-end;
         position: relative;
-        
+
+        @include forMobile {
+          height: auto;
+          padding: VW(12, $mobile) 0 VW(10, $mobile);
+
+          h1 {
+            font-size: VW(25, $mobile);
+          }
+        }
+
         .line {
           position: absolute;
           top: 0;
@@ -55,6 +75,13 @@
           left: 0;
           background-color: $c-black;
           width: VW(1);
+
+          @include forMobile {
+            bottom: auto;
+            width: auto;
+            right: 0;
+            height: VW(1, $mobile);
+          }
         }
       }
     }

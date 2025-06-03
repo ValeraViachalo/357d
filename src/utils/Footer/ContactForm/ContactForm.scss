@@ -5,25 +5,42 @@
   flex-direction: column;
   justify-content: space-between;
 
+  @include forMobile {
+    padding: VW(40, $mobile) VW(10, $mobile) VW(10, $mobile);
+    gap: VW(30, $mobile);
+  }
+
   &__logo {
     width: 100%;
     height: auto;
   }
 
-  &__title {
-    width: 100%;
-    margin-bottom: VW(10);
-
-    .title-anim {
-      width: VW(200);
-      display: block;
-    }
-  }
-
   .bottom {
+    @include forMobile {
+      margin-top: VW(30, $mobile);
+    }
+
     p {
       display: flex;
       gap: 0.3em;
+    }
+
+    &__title {
+      width: 100%;
+      margin-bottom: VW(10);
+
+      @include forMobile {
+        // margin-bottom: VW(60, $mobile);
+      }
+
+      .title-anim {
+        width: VW(200);
+        display: block;
+
+        @include forMobile {
+          width: VW(120, $mobile);
+        }
+      }
     }
   }
 
@@ -33,6 +50,17 @@
     gap: VW(10);
     align-items: flex-start;
     margin-top: VW(20);
+
+    @include forMobile {
+      gap: VW(20, $mobile);
+    }
+
+    &__title {
+      @include forMobile {
+        margin-bottom: VW(30, $mobile);
+        font-size: VW(35, $mobile);
+      }
+    }
 
     .input {
       width: 100%;
@@ -94,6 +122,8 @@
 
       &-error-msg {
         padding-top: VW(5);
+        opacity: 0.5;
+        color: red;
       }
 
       &-wrapper {
@@ -119,6 +149,11 @@
         // margin-top: VW(10);
         text-transform: uppercase;
 
+        @include forMobile {
+          padding: VW(15, $mobile) 0 VW(12, $mobile);
+          margin-top: VW(20, $mobile);
+        }
+
         &--disabled {
           opacity: 0.4;
           pointer-events: none;
@@ -134,6 +169,10 @@
         align-items: center;
         gap: 0.4em;
 
+        @include forMobile {
+          gap: .6em;
+        }
+
         .custom-checkbox {
           display: flex;
           align-items: center;
@@ -141,7 +180,7 @@
           width: 1.7em;
           border: VW(1) solid $c-black;
           // border-radius: 50%;
-          border-radius: 2vw;
+          border-radius: 10vw;
           aspect-ratio: 1;
           cursor: pointer;
           transition: background 0.2s;
@@ -170,8 +209,13 @@
         .accept-text {
           width: fit-content;
           opacity: 0.7;
+
+          @include forMobile {
+            font-size: VW(13.5, $mobile);
+          }
+
           a {
-            @extend %body-text;
+            font: inherit;
             color: $c-black;
             text-decoration: underline;
             transition: color 0.2s;

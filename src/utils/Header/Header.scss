@@ -4,19 +4,22 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-
+  z-index: 1000;
   align-items: center;
 
   // color: $c-black;
   // fill: $c-black;
   // stroke: $c-black;
-  background-color: #d9d9d934;
-  backdrop-filter: blur(10vw);
+  background-color: #d9d9d980;
+  backdrop-filter: blur(VW(100));
   // transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
 
   @include forMobile {
-    padding: VW(5, $mobile) VW(10, $mobile);
+    backdrop-filter: blur(10vw);
+    padding: 0 VW(10, $mobile) 0 VW(10, $mobile);
+    // padding: VW(10, $mobile);
+    display: flex !important;
+    justify-content: space-between;
   }
 
   &__logo {
@@ -26,8 +29,17 @@
     height: VW(25);
     opacity: 1;
 
+    @include forMobile {
+      width: VW(120, $mobile);
+      height: VW(26, $mobile);
+    }
+
     &--hide {
       opacity: 0;
+
+      @include forMobile {
+        opacity: 1;
+      }
     }
 
     @include forMobile {
@@ -77,18 +89,27 @@
           position: absolute;
           opacity: 0;
           transition: inherit;
-          filter: blur(.2vw);
+          filter: blur(0.2vw);
         }
       }
     }
   }
 
   &__list {
-    grid-column: 5/11;
+    // grid-column: 5/11;
     display: flex;
     align-items: center;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
     gap: VW(10);
     margin-top: VW(3);
+
+    @include forMobile {
+      display: none;
+    }
 
     .link {
       padding: 0 VW(15);
@@ -107,7 +128,7 @@
     align-items: center;
     gap: VW(15);
     height: 100%;
-    
+
     @include forMobile {
       grid-column: 7/13;
       gap: VW(10, $mobile);
@@ -125,16 +146,26 @@
       display: flex;
       align-items: center;
       transition: color 0.5s ease;
+      gap: 0.5em;
 
-      @include hover {
-        color: $c-white;
-        &::after {
-          opacity: 1;
-        }
+      @include forMobile {
+        padding: 0 VW(20, $mobile);
       }
 
+      // @include hover {
+      //   color: $c-white;
+
+      //   &::after {
+      //     opacity: 1;
+      //   }
+
+      //   .contact-button__icon > path {
+      //     stroke: $c-white;
+      //   }
+      // }
+
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 0;
@@ -143,20 +174,66 @@
         width: max(1%, 1px);
         height: VW(36);
         background-color: $c-black;
+
+        @include forMobile {
+          height: VW(30, $mobile);
+          opacity: 0.4;
+        }
       }
       &::after {
-        content: '';
+        content: "";
         position: absolute;
-        top: 45%;
-        left: 0;
+        top: 50%;
+        right: 0;
         z-index: -1;
         transform: translateY(-50%);
-        width: 100%;
-        height: VW(40);
+        width: max(1%, 1px);
         background-color: $c-black;
-        opacity: 0;
-        transition: opacity 0.5s ease;
+
+        @include forMobile {
+          height: VW(30, $mobile);
+          opacity: 0.4;
+        }
       }
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   top: -10%;
+      //   left: 0;
+      //   z-index: -1;
+      //   transform: translateY(-50%);
+      //   width: 100%;
+      //   height: VW(74);
+      //   background-color: $c-black;
+      //   opacity: 0;
+      //   transition: opacity 0.5s ease;
+      // }
+
+      &__icon {
+        width: VW(11);
+        height: VW(12);
+        padding-bottom: VW(4);
+
+        @include forMobile {
+          display: none;
+        }
+
+        & > path {
+          stroke: $c-black;
+          transition: stroke 0.3s ease;
+        }
+      }
+    }
+  }
+
+  &__burger {
+    width: VW(30, $mobile);
+    height: 100%;
+    padding: VW(14, $mobile) VW(0, $mobile) VW(14, $mobile) VW(10, $mobile);
+    display: none;
+
+    @include forMobile {
+      display: block;
     }
   }
 }

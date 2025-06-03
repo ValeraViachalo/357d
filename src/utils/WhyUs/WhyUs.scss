@@ -5,9 +5,24 @@
 
   .list {
     row-gap: VW(120);
+    margin-top: VW(20);
+
+    @include forMobile {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0;
+    }
 
     .card {
       grid-column: span 4;
+
+      @include forMobile {
+        padding: VW(20, $mobile) 0;
+
+        &:not(:last-of-type) {
+          border-bottom: VW(1, $mobile) solid $c-black;
+        }
+      }
 
       &:nth-of-type(3),
       &:nth-of-type(5) {
@@ -16,11 +31,20 @@
 
       .title {
         width: 60%;
+
+        @include forMobile {
+          width: 100%;
+        }
       }
 
       .text {
         width: 80%;
         margin-top: VW(10);
+
+        @include forMobile {
+          width: 90%;
+          margin-top: VW(10, $mobile);
+        }
       }
     }
 
@@ -28,6 +52,10 @@
       // width: 33%;
       grid-column: 5/9;
       grid-row: 2/2;
+
+      @include forMobile {
+        transform: none !important;
+      }
     }
   }
 }

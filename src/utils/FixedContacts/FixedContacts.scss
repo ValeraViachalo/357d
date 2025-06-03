@@ -1,0 +1,26 @@
+.fixed-contacts {
+  display: flex;
+  gap: VW(5);
+  margin-top: VW(15);
+  position: fixed;
+  bottom: VW(20);
+  right: VW(20);
+  z-index: 1000;
+
+  @include forMobile {
+    display: none;
+  }
+
+  .icon {
+    width: VW(40);
+    height: VW(40);
+    background: no-repeat center/contain;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    border-radius: 10vw;
+
+    @include hover {
+      // opacity: .8;
+      filter: invert(.8);
+    }
+  }
+}

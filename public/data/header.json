@@ -13,23 +13,36 @@
       {
         "name": "For clients",
         "link": "/for-clients"
-      },
-      {
-        "name": "Properties for Sale",
-        "link": "/about"
       }
     ],
     "contact": {
-      "name": "Contact",
+      "name": "Get in touch",
       "href": "#contact"
-    }
+    },
+    "fixedContacts": [
+      {
+        "text": "Phone",
+        "icon": "/images/socials/phone-black.svg",
+        "href": "tel:35790169445"
+      },
+      {
+        "text": "whatsApp",
+        "icon": "/images/socials/whatsapp-black.svg",
+        "href": "https://www.facebook.com/"
+      },
+      {
+        "text": "telegram",
+        "icon": "/images/socials/telegram-black.svg",
+        "href": "https://www.x.com/"
+      }
+    ]
   },
   "gre": {
     "title": "Κτήμα για να είστε περήφανοι",
     "list": [
       {
         "name": "Έργα",
-        "link": "/"
+        "link": "/projects"
       },
       {
         "name": "Σχετικά με εμάς",
@@ -38,10 +51,6 @@
       {
         "name": "Για πελάτες",
         "link": "/for-clients"
-      },
-      {
-        "name": "Ακίνητα προς πώληση",
-        "link": "/"
       }
     ],
     "contact": {

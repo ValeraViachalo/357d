@@ -218,3 +218,28 @@ export const ProjectsAnim = {
     },
   },
 };
+
+export const MenuAnim = {
+  wrapper: {
+    initial: {
+      opacity: 0,
+      filter: "blur(0.4vw)",
+    },
+    animate: {
+      opacity: 1,
+      filter: "blur(0vw)",
+      transition: {
+        duration: 0.5,
+        ease: ease.inOutCirc,
+      },
+    },
+    exit: {
+      opacity: 0,
+      filter: "blur(0.4vw)",
+      transition: {
+        duration: 0.5,
+        ease: ease.inOutCirc,
+      },
+    },
+  }
+}

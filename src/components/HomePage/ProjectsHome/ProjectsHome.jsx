@@ -6,6 +6,7 @@ import "./ProjectsHome.scss";
 import clsx from "clsx";
 import { Button } from "@/utils/Button/Button";
 import { Content } from "@/utils/Content/Content";
+import Link from "next/link";
 
 export default function ProjectsHome() {
   const { data: allData } = useContext(DataContext);
@@ -19,10 +20,10 @@ export default function ProjectsHome() {
           <ProjectCard project={project} key={index} />
         ))}
       </div>
-      <div className="projects-bottom">
+      {/* <div className="projects-bottom">
         <h2>{data.bottom?.leftText}</h2>
         <h2>{data.bottom?.rightText}</h2>
-      </div>
+      </div> */}
     </section>
   );
 }
@@ -43,16 +44,14 @@ const ProjectCard = ({ project }) => {
             </span>
           ))}
         </div>
-        <h1>{project.title}</h1>
+        <h1 className="card__title">{project.title}</h1>
         <p>{project?.adress}</p>
 
         <div className="about">
           {project?.about.map((item, index) => (
             <div className="about-item" key={index}>
               <p className="about-item-top">
-                <span
-                  className={`icon icon--${item.slug.split("-")[0]}`}
-                />
+                <span className={`icon icon--${item.slug.split("-")[0]}`} />
                 {item.text}
               </p>
               <p>{item.value}</p>
@@ -64,15 +63,34 @@ const ProjectCard = ({ project }) => {
             {project?.price.text} €{project?.price.value}
           </h2>
           <div className="bottom__button">
-            <Button
-              // greenHover
+            <Link
               href={project.button?.href}
-              text={project.button?.text}
-            />
+              className={clsx("button", {
+                "button--not-available":
+                  project.button?.type === "not-available",
+              })}
+            >
+              <p className="button__text-wrapper upperCase" aria-label={project.button?.text}>
+                {project.button?.text &&
+                  project.button?.text.split("").map((word, index) => (
+                    <span
+                      className="button__text"
+                      key={index}
+                      style={{
+                        transitionDelay: `${
+                          (index / project.button?.text.split("").length) * 0.06
+                        }s`,
+                      }}
+                    >
+                      {word !== " " ? word : <>&nbsp;</>}
+                    </span>
+                  ))}
+              </p>
+            </Link>
           </div>
         </div>
       </div>
-      <div className="card__content">
+      <div className="card__content card__content-images">
         {project.images.map((image, index) => (
           <Content
             url={image}

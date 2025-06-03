@@ -1,9 +1,13 @@
 .dropdown {
   position: relative;
 
+  @include forMobile {
+    display: none;
+  }
+
   &--active {
     .dropdown__head {
-        opacity: 0.8; 
+      opacity: 0.8;
 
       .icon {
         rotate: -180deg;
@@ -14,7 +18,7 @@
   &__head {
     cursor: pointer;
     position: relative;
-    padding: 0 VW(10);
+    // padding: 0 VW(10);
     line-height: 100%;
     transition: color 0.3s ease;
 
@@ -25,7 +29,7 @@
       width: VW(15);
       height: VW(7);
       margin-left: VW(2);
-      stroke: auto;
+      stroke: $c-black;
 
       @include forMobile {
         width: VW(10, $mobile);
@@ -51,13 +55,11 @@
     backdrop-filter: blur(5px);
     border-radius: VW(6);
 
-
     pointer-events: none;
     opacity: 0;
     scale: 0.95;
 
-    transition: scale 0.3s ease, opacity 0.3s ease,
-      filter 0.3s ease;
+    transition: scale 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
 
     @include forMobile {
       border-radius: VW(6, $mobile);
@@ -83,7 +85,7 @@
     padding: VW(7) VW(10) VW(5);
     border-radius: VW(6);
     transition: background-color 0.3s ease, color 0.3s ease opacity 0.3s ease !important;
-    
+
     @include hover {
       color: $c-black;
       background-color: $c-white;

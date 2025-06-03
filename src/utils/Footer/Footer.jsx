@@ -36,7 +36,7 @@ export default function Footer() {
     data && (
       <footer className="footer container grid">
         <div className="navigation navigation-menu">
-          <p>{navigation.pages?.title}</p>
+          <p className="navigation-title">{navigation.pages?.title}</p>
           <div className="list">
             {navigation.pages?.list.map((item, index) => (
               <LinkAnim
@@ -47,9 +47,9 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="copyright small-text">{data.copyright}</div>
+        <div className="copyright small-text" data-only-desktop>{data.copyright}</div>
         <div className="navigation navigation-legal">
-          <p>{navigation.legal?.title}</p>
+          <p className="navigation-title">{navigation.legal?.title}</p>
           <div className="list">
             {navigation.legal?.list.map((item, index) => (
               <LinkAnim
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
         <ContactForm data={data.contactForm} />
         <div className="navigation navigation-contacts">
-          <p>{navigation.contacts?.title}</p>
+          <p className="navigation-title">{navigation.contacts?.title}</p>
           <div className="list">
             {navigation.contacts?.top.map((item, index) => (
               <LinkAnim
@@ -80,11 +80,12 @@ export default function Footer() {
                 className="icon"
                 style={{ backgroundImage: `url(${item.icon})` }}
                 key={index + "--socials-contacts"}
+                target="_blank"
               />
             ))}
           </div>
         </div>
-        <div className="navigation navigation-address">
+        {/* <div className="navigation navigation-address">
           <p>{navigation.address?.title}</p>
           <Link
             className="navigation-address__link"
@@ -94,8 +95,25 @@ export default function Footer() {
             href={navigation.address?.button?.href || "/"}
             target="_blank"
           />
+        </div> */}
+        <LinkAnim
+          href={data.madeBy.href}
+          text={data.madeBy.text}
+          target="_blank"
+          classes="made-by"
+          data-only-desktop
+        />
+
+        <div className="copyright-bottom" data-only-mobile--flex>
+          <p className="copyright-bottom__text">{data.copyright}</p>
+          <LinkAnim
+            href={data.madeBy.href}
+            text={data.madeBy.text}
+            target="_blank"
+            classes="made-by"
+          />
+
         </div>
-        <LinkAnim href={data.madeBy.href} text={data.madeBy.text} target="_blank" classes="made-by"/>
       </footer>
     )
   );

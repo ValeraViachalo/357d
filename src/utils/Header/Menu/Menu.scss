@@ -1,0 +1,112 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1010;
+
+  height: VW(410, $mobile);
+  padding: VW(10, $mobile);
+
+  background-color: $c-white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+
+  @include forDesktop {
+    display: none;
+  }
+
+  &-bg {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+  }
+
+  &__close {
+    width: VW(70, $mobile);
+    height: VW(70, $mobile);
+  }
+
+  &-socials {
+    display: flex;
+    align-items: center;
+    gap: VW(5, $mobile);
+    position: relative;
+
+    .icon {
+      width: VW(40, $mobile);
+      height: VW(40, $mobile);
+      background: no-repeat center/contain;
+      transition: filter 0.3s ease, background-color 0.3s ease;
+      border-radius: 10vw;
+
+      @include hover {
+        filter: invert(1);
+        background-color: $c-white;
+      }
+    }
+  }
+
+  .menu-dropdown {
+    border-radius: 5vw;
+    padding: VW(14, $mobile) VW(12, $mobile) VW(12, $mobile);
+    border: VW(1, $mobile) solid $c-black;
+    height: fit-content;
+    font-size: VW(16, $mobile);
+    transition: border-radius 0.5s $ease-in-out-expo;
+    position: absolute;
+    top: 0;
+
+    &-placehold {
+      width: VW(70, $mobile);
+    }
+
+    &--active {
+      border-radius: 3vw;
+    }
+
+    &__head {
+      display: flex;
+      align-items: center;
+      gap: VW(10, $mobile);
+      line-height: 90%;
+
+      &-icon {
+        width: VW(12, $mobile);
+        height: VW(8, $mobile);
+      }
+    }
+
+    &__wrapper {
+      transition: margin 0.3s $ease-in-out-expo;
+      pointer-events: none;
+      
+      &--active {
+        pointer-events: all;
+        margin-top: VW(10, $mobile);
+      }
+    }
+
+    &__link {
+      font-size: VW(16, $mobile);
+
+    }
+  }
+
+  &-link-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    &__link {
+      padding: VW(10, $mobile) 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-top: VW(1, $mobile) solid $c-black;
+      width: 100%;
+    }
+  }
+}

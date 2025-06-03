@@ -17,6 +17,13 @@
       width: 100%;
       height: VW(900);
       overflow: hidden;
+
+      @include forMobile {
+        height: auto;
+        aspect-ratio: 3/4;
+        transform: none !important;
+        object-position: 20%;
+      }
     }
   }
 }

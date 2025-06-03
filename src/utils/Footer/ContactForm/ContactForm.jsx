@@ -55,7 +55,7 @@ export const ContactForm = ({ data }) => {
   };
 
   return (
-    <div className="contact-form">
+    <div className="contact-form" id="contact">
       <Formik
         initialValues={{
           email: "",
@@ -77,7 +77,7 @@ export const ContactForm = ({ data }) => {
                 <p>{data.contact?.successTitle?.subtext}</p>
               </div>
             )}
-            <h2>{data?.topTitle}</h2>
+            <h2 className="form__title">{data?.topTitle}</h2>
             <Form
               className={clsx("form", {
                 "form--submitted": submitted,
@@ -179,7 +179,7 @@ export const ContactForm = ({ data }) => {
                     dangerouslySetInnerHTML={{
                       __html: data.contact.privacyText.text,
                     }}
-                    className="accept-text"
+                    className="accept-text small-text"
                   />
                 </label>
                 <ErrorMessage
@@ -212,7 +212,7 @@ export const ContactForm = ({ data }) => {
         )}
       </Formik>
       <div className="bottom">
-        <div className="contact-form__title">
+        <div className="bottom__title">
           <p>
             <span>{data.title.top}</span>
             <AnimTitle titles={data.title.middle} />

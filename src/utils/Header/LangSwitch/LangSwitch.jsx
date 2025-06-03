@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./LangSwitch.scss";
+// import { LinkPageTransition } from "@/utils/LinkPageTransition/LinkPageTransition";
 
 export const LangSwitch = () => {
   const path = usePathname();
@@ -15,11 +16,11 @@ export const LangSwitch = () => {
 
   return (
     <DropDown
-      headText={isGrePath ? "Gre" : "Eng"}
+      headText={isGrePath ? "GR" : "EN"}
     >
       <div className="dropdown__content">
         <Link href={isGrePath ? (engPath || "/") : grePath} className="dropdown__link">
-          <p className="small-text">{isGrePath ? "Eng" : "Gre"}</p>
+          <p className="small-text">{isGrePath ? "EN" : "GR"}</p>
         </Link>
       </div>
     </DropDown>
