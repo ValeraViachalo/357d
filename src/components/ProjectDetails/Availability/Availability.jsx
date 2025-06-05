@@ -8,6 +8,7 @@ import { TableHeader } from "./TableHeader/TableHeader";
 import { AnimatePresence, motion } from "framer-motion";
 import { anim, ProjectsAnim } from "@/lib/helpers/anim";
 import { NewFilters } from "./NewFilters/NewFilters";
+import { Button } from "@/utils/Button/Button";
 
 export default function Availability({ data }) {
   const [projectsList, setProjectsList] = useState(data?.lists);
@@ -103,24 +104,47 @@ const Row = ({ data, ...rest }) => {
       {...anim(ProjectsAnim.card)}
     >
       <span className="background"></span>
-      <span>{data?.type}</span>
+      <p className="table-row__type">
+        <span className="shadow table-row__mobile-text">Type</span>
+        {data?.type}
+      </p>
       <LinkAnim
         text={data?.floorPlan?.text}
         href={data?.floorPlan?.href}
         download
         target="_blank"
         icon="/images/icons/download-icon.svg"
+        data-hide-for-mobile--flex
       />
-      <span>{data?.bedrooms.value}</span>
-      <span>{data?.bathroom.value}</span>
-      <span>{data?.floor.value}</span>
-      <span>
+
+      <p className="table-row__bedrooms">
+        {data?.bedrooms.value}
+        <span className="shadow table-row__mobile-text">Bedrooms</span>
+      </p>
+      <p className="table-row__bathroom">
+        {data?.bathroom.value}
+        <span className="shadow table-row__mobile-text">Bathrooms</span>
+      </p>
+      <p className="table-row__floor">
+        {data?.floor.value}
+        <span className="shadow table-row__mobile-text">Floor</span>
+      </p>
+      <p className="table-row__area">
+        <span className="shadow table-row__mobile-text">Area</span>
         {data?.area.value} {data?.area.unit}
-      </span>
-      <span>
+      </p>
+      <p className="table-row__price">
         {data?.price.unit}
         {data?.price.value}
-      </span>
+      </p>
+      <Button
+        text={data?.floorPlan?.text}
+        href={data?.floorPlan?.href}
+        download
+        target="_blank"
+        secondaryItem={<span className="icon icon--white icon--download" />}
+        data-only-mobile--flex
+      />
     </motion.div>
   );
 };

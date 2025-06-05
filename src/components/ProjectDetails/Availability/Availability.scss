@@ -3,6 +3,10 @@
   margin-top: VW(140);
   background-color: $g-10;
 
+  @include forMobile {
+    background-color: $c-white;
+  }
+
   .top {
     display: flex;
     flex-direction: column;
@@ -10,13 +14,33 @@
     gap: VW(20);
   }
 
+  &__title {
+    @include forMobile {
+      font-size: VW(50, $mobile) !important;
+    }
+  }
+
   .table {
     margin-top: VW(60);
+
+    @include forMobile {
+      display: flex;
+      flex-direction: column;
+      gap: VW(10, $mobile);
+
+      margin-top: VW(40, $mobile);
+    }
+
     &-grid {
       display: grid;
       grid-template-columns: VW(150) VW(550) VW(150) VW(150) VW(150) VW(150) VW(
           150
         );
+
+      @include forMobile {
+        grid-template-columns: 1fr 1fr;
+        gap: VW(10, $mobile);
+      }
     }
 
     &-header {
@@ -25,6 +49,10 @@
       position: sticky;
       top: VW(45);
       z-index: 10;
+
+      @include forMobile {
+        display: none;
+      }
 
       &::after {
         content: "";
@@ -43,6 +71,15 @@
       position: relative;
       z-index: 2;
 
+      @include forMobile {
+        // display: flex;
+        // flex-direction: column;
+        // gap: VW(10);
+        padding: VW(20, $mobile) VW(10, $mobile);
+        background-color: $g-20;
+        border-bottom: none;
+      }
+
       &--nonavialable {
         color: $g-60;
         pointer-events: none;
@@ -50,6 +87,57 @@
         .link-anim {
           color: $c-black;
           opacity: 35%;
+        }
+      }
+
+      &__mobile-text {
+        display: none;
+
+        @include forMobile {
+          display: inline-block;
+          margin-right: 0.4em;
+        }
+      }
+
+      &__type {
+        @include forMobile {
+          grid-column: 1/3;
+          padding-bottom: VW(10, $mobile);
+          margin-bottom: VW(10, $mobile);
+          border-bottom: $g-50 VW(1) solid;
+        }
+      }
+
+      &__bedrooms,
+      &__bathroom,
+      &__floor {
+        @include forMobile {
+          grid-column: 1/2;
+          display: flex;
+          align-items: center;
+          gap: 0.4em;
+        }
+      }
+
+      &__area {
+        @include forMobile {
+          grid-column: 2/3;
+          grid-row: 2;
+        }
+      }
+
+      &__price {
+        @include forMobile {
+          grid-column: 2/3;
+          // grid-row: 3/4;
+          font-size: VW(25, $mobile);
+        }
+      }
+
+      .button {
+        @include forMobile {
+          margin-top: VW(10, $mobile);
+          grid-column: 1/3;
         }
       }
 
@@ -82,8 +170,27 @@
       padding: VW(20) 0;
       border-top: VW(1) solid $c-black;
 
+      @include forMobile {
+        border-top: none;
+        padding: VW(20, $mobile) 0;
+        h2 {
+          font-size: VW(14, $mobile);
+        }
+      }
+
       &-right {
         grid-column: 3/8;
+
+        @include forMobile {
+          grid-column: 2/3;
+          display: flex;
+
+          .icon {
+            height: 100%;
+            width: VW(27, $mobile);
+            margin-right: VW(8, $mobile);
+          }
+        }
       }
     }
   }

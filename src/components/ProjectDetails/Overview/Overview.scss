@@ -2,8 +2,19 @@
   background-color: $green-100;
   padding: VW(40) 0 VW(20);
 
+  @include forMobile {
+    padding: VW(60, $mobile) 0 VW(10, $mobile);
+    overflow: hidden;
+  }
+
   .title {
     position: relative;
+
+    @include forMobile {
+      display: flex;
+      flex-direction: column;
+      gap: VW(10, $mobile);
+    }
 
     &__text {
       position: absolute;
@@ -11,10 +22,8 @@
       width: VW(160);
 
       @include forMobile {
-        top: VW(5, $mobile);
-        width: VW(82, $mobile);
-        font-size: VW(10, $mobile);
-        line-height: 105%;
+        position: relative;
+        width: auto;
       }
     }
 
@@ -22,7 +31,7 @@
       text-indent: VW(246);
 
       @include forMobile {
-        text-indent: VW(88, $mobile);
+        text-indent: 0;
       }
     }
   }
@@ -33,17 +42,32 @@
     justify-content: space-between;
     position: relative;
 
+    @include forMobile {
+      flex-direction: column;
+      align-items: center;
+      gap: VW(20, $mobile);
+    }
+
     .links {
       display: flex;
       flex-direction: column;
       gap: 0.4em;
       margin-top: 0.5em;
+    
+      @include forMobile {
+        width: 110%;
+        flex-direction: row;
+        overflow: scroll;
+        gap: VW(10, $mobile);
+      }
     }
+
     .link {
       padding: 0.45em 0.6em 0.3em;
       border: VW(1) solid $c-black;
       border-radius: 10vw;
       transition: background-color 0.3s ease, color 0.3s ease;
+      text-wrap: nowrap;
 
       &__wrapper {
         position: relative;
@@ -61,6 +85,13 @@
           }
         }
 
+        @include forMobile {
+          flex-direction: column;
+          // width: 100%;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
         &--active {
           .link {
             background-color: $c-black;
@@ -74,6 +105,7 @@
         .hover-text {
           opacity: 0;
           transition: opacity 0.3s ease;
+          text-wrap: nowrap;
         }
       }
     }
@@ -84,6 +116,12 @@
       top: VW(60);
       height: fit-content;
       margin-bottom: VW(50);
+
+      @include forMobile {
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
     }
 
     &__content {
@@ -92,6 +130,11 @@
       flex-direction: column;
       align-items: flex-end;
       gap: VW(20);
+
+      @include forMobile {
+        width: 100%;
+        align-items: center;
+      }
 
       .image {
         position: absolute;
@@ -106,6 +149,11 @@
           width: VW(920);
           height: VW(620);
           overflow: hidden;
+
+          @include forMobile {
+            width: 100%;
+            height: VW(300, $mobile);
+          }
         }
       }
 
@@ -113,6 +161,9 @@
         width: 100%;
         height: VW(620);
 
+        @include forMobile {
+          height: VW(300, $mobile);
+        }
       }
     }
   }

@@ -8,6 +8,11 @@
     gap: VW(5);
     justify-content: center;
 
+    @include forMobile {
+      flex-wrap: wrap;
+      gap: VW(10, $mobile) VW(20, $mobile);
+    }
+
     button {
       text-align: left;
       outline: none;
@@ -66,12 +71,13 @@
     .filter {
       &-wrapper {
         position: relative;
+        z-index: 15;
       }
 
       &__button {
         display: flex;
         // align-items: center;
-        gap: .3em;
+        gap: 0.3em;
         padding: VW(8) VW(12) VW(6);
         border-radius: 10vw;
 
@@ -79,6 +85,10 @@
 
         @include hover {
           background-color: rgba(#000000, 0.1);
+        }
+
+        @include forMobile {
+          padding: VW(6, $mobile) VW(12, $mobile) VW(4, $mobile);
         }
 
         &--active {
@@ -91,7 +101,7 @@
 
         .icon {
           scale: 0.8;
-          padding-top: .2em;
+          padding-top: 0.2em;
           transition: rotate 0.5s $ease-in-out-expo;
         }
       }
@@ -100,7 +110,7 @@
         position: absolute;
         top: 120%;
         left: 50%;
-        right: 0;
+        // right: 0;
         width: max-content;
         min-width: 100%;
         padding: VW(20);
@@ -119,18 +129,29 @@
         transition: opacity 0.3s ease, filter 0.5s ease,
           transform 0.5s $ease-in-out-circ;
 
+        @include forMobile {
+          padding: VW(20, $mobile);
+          border: 1px solid $c-black;
+          gap: VW(10, $mobile);
+          width: auto;
+        }
+
         &--active {
           opacity: 1;
           filter: blur(0vw);
           pointer-events: all;
           transform: translate(-50%, 0%);
-
         }
 
         .link {
           &--reset {
             padding-bottom: VW(5);
             border-bottom: VW(1) solid $g-20;
+
+            @include forMobile {
+              padding-bottom: VW(5, $mobile);
+              border-bottom: VW(1, $mobile) solid $g-20;
+            }
           }
         }
       }
@@ -178,8 +199,6 @@
     label {
       display: flex;
       flex-direction: column;
-      font-size: VW(14);
-      color: $c-black;
 
       .input {
         margin-top: VW(4);
@@ -195,6 +214,12 @@
           border-color: $c-black;
         }
 
+        @include forMobile {
+          width: VW(140, $mobile);
+          padding: VW(8, $mobile) VW(20, $mobile) VW(8, $mobile) VW(10, $mobile);
+          font-size: VW(16, $mobile);
+        }
+
         &-wrapper {
           position: relative;
           display: flex;
@@ -202,6 +227,9 @@
           gap: VW(10);
           width: VW(160);
 
+          @include forMobile {
+            width: VW(140, $mobile);
+          }
 
           .input-currency {
             position: absolute;
@@ -216,6 +244,12 @@
 
             display: flex;
             align-items: center;
+          
+            @include forMobile {
+              font-size: VW(16, $mobile);
+              padding: 0 VW(10, $mobile);
+            }
+
           }
         }
       }

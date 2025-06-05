@@ -2,6 +2,10 @@
   width: 100%;
   height: VW(620);
 
+  @include forMobile {
+    height: VW(300, $mobile);
+  }
+
   .marker {
     width: 15px;
     height: 15px;

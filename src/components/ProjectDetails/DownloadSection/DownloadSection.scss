@@ -6,13 +6,20 @@
 
   &__button {
     grid-column: 3/11;
-    .icon {
-      transition: filter 0.3s 0.3s;
-    }
+
     @include hover {
       .icon {
         filter: invert(0);
       }
+    }
+
+    @include forMobile {
+      grid-column: 1/7;
+      margin: 0 VW(20);
+    }
+
+    .icon {
+      transition: filter 0.3s 0.3s;
     }
   }
 

@@ -452,8 +452,28 @@
               "image": "/images/projects/unit/interest-1.jpg"
             },
             {
-              "name": "Beach",
-              "slug": "beach",
+              "name": "Highway",
+              "slug": "highway",
+              "position": {
+                "lat": 34.691,
+                "lng": 33.061
+              },
+              "farness": "10-min drive",
+              "image": "/images/projects/unit/interest-2.jpg"
+            },
+            {
+              "name": "Private school",
+              "slug": "private-school",
+              "position": {
+                "lat": 34.691,
+                "lng": 33.061
+              },
+              "farness": "10-min drive",
+              "image": "/images/projects/unit/interest-2.jpg"
+            },
+            {
+              "name": "Airport",
+              "slug": "airport",
               "position": {
                 "lat": 34.691,
                 "lng": 33.061
