@@ -1,26 +1,18 @@
 .title-text {
   position: relative;
   margin-top: VW(60);
-  &__text {
-    position: absolute;
-    top: VW(7);
-    width: VW(160);
 
-    @include forMobile {
-      top: VW(5, $mobile);
-      width: VW(82, $mobile);
-      font-size: VW(10, $mobile);
-      line-height: 105%;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: VW(20);
+
+  width: 50%;
+
+  @include forMobile {
+    width: 100%;
+    margin-top: VW(30, $mobile);
+    gap: VW(10, $mobile);
   }
-
-  &__title {
-    text-indent: VW(246);
-    
-    @include forMobile {
-      text-indent: VW(88, $mobile);
-    }
-  } 
 }
 
 .double-text {
@@ -30,11 +22,22 @@
   justify-content: center;
   gap: VW(50);
 
+  @include forMobile {
+    flex-direction: column;
+    gap: VW(20, $mobile);
+    margin-top: VW(60, $mobile);
+  }
+
   &__wrapper {
     width: 30%;
     display: flex;
     flex-direction: column;
     gap: VW(20);
+
+    @include forMobile {
+      width: 100%;
+      gap: VW(10, $mobile);
+    }
   }
 }
 

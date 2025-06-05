@@ -2,16 +2,17 @@
   .gallery {
     padding-top: VW(20);
     padding-bottom: VW(20);
-    background-color: $g-10;
+    // background-color: $g-10;
+    margin-top: VW(30);
 
     .swiper {
-      margin-top: VW(120);
+      // margin-top: VW(120);
     }
 
     &__slide {
       width: VW(1110);
       height: VW(720);
-      margin: 0 VW(10);
+      // margin: 0 VW(10);
     }
 
     .swiper-pagination {

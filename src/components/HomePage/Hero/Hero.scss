@@ -3,7 +3,7 @@
     margin-top: VW(60);
 
     @include forMobile {
-      margin-top: VW(120, $mobile);
+      margin-top: VW(100, $mobile);
     }
 
     .top {
@@ -69,7 +69,11 @@
 
     &__video {
       @include forMobile {
-        aspect-ratio: 3/4;
+        aspect-ratio: 3/5;
+
+        video {
+          object-position: 0%;
+        }
       }
     }
   }

@@ -1,6 +1,15 @@
 .aviability {
   padding-top: VW(140);
+  margin-top: VW(140);
   background-color: $g-10;
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: VW(20);
+  }
+
   .table {
     margin-top: VW(60);
     &-grid {
@@ -37,7 +46,7 @@
       &--nonavialable {
         color: $g-60;
         pointer-events: none;
-        
+
         .link-anim {
           color: $c-black;
           opacity: 35%;

@@ -5,6 +5,7 @@ import { LinkAnim } from "@/utils/LinkAnim/LinkAnim";
 
 import "./Details.scss";
 import clsx from "clsx";
+import { Button } from "@/utils/Button/Button";
 
 export default function Details() {
   const { data: allData } = useContext(DataContext);
@@ -14,6 +15,8 @@ export default function Details() {
     data.showSection && (
       <section className="details-section__wrapper">
         <div className="details-section grid">
+          <h2 className="price">{data?.price}</h2>
+
           <div className="address">
             <p>{data.address?.text}</p>
             <div className="address__link">
@@ -25,7 +28,7 @@ export default function Details() {
               <span className="icon icon--location" />
             </div>
           </div>
-          <div className="about">
+          {/* <div className="about">
             {data?.about.map((item, index) => (
               <div className="about-item" key={index}>
                 <p>
@@ -35,8 +38,8 @@ export default function Details() {
                 <p>{item.value}</p>
               </div>
             ))}
-          </div>
-          <div className="categories">
+          </div> */}
+          {/* <div className="categories">
             {data?.categories && data?.categories.map((category, index) => (
               <span
                 className={clsx("categories__item", {
@@ -47,8 +50,15 @@ export default function Details() {
                 {category}
               </span>
             ))}
-          </div>
-          <h2 className="price">{data?.price}</h2>
+          </div> */}
+          {data?.availabilityButton?.show && (
+            <Button
+              classes="details-section__button"
+              text={data?.availabilityButton?.text}
+              href="#availability"
+              data-scroll-anchor="#availability"
+            />
+          )}
         </div>
       </section>
     )

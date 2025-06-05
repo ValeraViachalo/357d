@@ -1,4 +1,16 @@
 .video-section {
-  width: VW(900);
+  // width: VW(935);
   margin: VW(70) auto 0;
+
+  @include forMobile {
+    margin: VW(60, $mobile) auto 0;
+  }
+
+  &__player {
+    grid-column: 3/11;
+
+    @include forMobile {
+      grid-column: 1/7;
+    }
+  }
 }

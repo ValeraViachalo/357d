@@ -1,22 +1,21 @@
 import { LinkAnim } from "@/utils/LinkAnim/LinkAnim";
 import React from "react";
 import "./DownloadSection.scss";
+import { Button } from "@/utils/Button/Button";
 
 export const DownloadSection = ({ data }) => {
   return (
     <section className="download-section grid">
-      <p>{data?.title}</p>
-      <div className="download-section__list">
-      {data?.links.map((link, index) => link?.href && (
-        <LinkAnim
-          href={link?.href}
-          text={link.text}
-          key={index}
-          download
-          target="_blank"
-          icon="/images/icons/download-icon.svg" />
-      ))}
-      </div>
+      <Button
+        text={data?.button?.text}
+        href={data?.button?.href}
+        target="_blank"
+        classes="download-section__button"
+        secondaryItem={
+          <span className="icon icon--white icon--download" />
+        }
+        download
+      />
     </section>
   );
 };

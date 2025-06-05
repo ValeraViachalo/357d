@@ -99,7 +99,7 @@
           "button": {
             "type": "available",
             "text": "VIEW PROJECT",
-            "href": "/"
+            "href": "/projects/unit"
           }
         }
       ],

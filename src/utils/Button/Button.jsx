@@ -4,10 +4,11 @@ import React from 'react'
 import './Button.scss'
 import clsx from 'clsx'
 
-export const Button = ({ text, href, secondaryItem, greenHover=false, ...rest }) => {
+export const Button = ({ text, href, secondaryItem, greenHover=false, classes=false, ...rest }) => {
   return (
     <Link href={href} {...rest} className={clsx("button", {
       "button--green-hover": greenHover,
+      [classes]: classes,
     })}>
       {secondaryItem && (
         <p className="button__text-wrapper" aria-label={text}>

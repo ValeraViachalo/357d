@@ -7,9 +7,38 @@
       "documentImage": "/images/screenshot2.jpg"
     },
     "hero": {
-      "title": "Unit residence",
+      "title": "GEITONIA Residence",
       "image": "/images/projects/unit/hero.png",
-      "text": "A Modern Lifestyle, Right at Your Doorstep"
+      "categories": [
+        {
+          "text": "Off Plan",
+          "slug": "off-plan"
+        },
+        {
+          "text": "Under The Constructions",
+          "slug": "under-the-construction"
+        }
+      ],
+      "heroDetails": {
+        "showSection": true,
+        "about": [
+          {
+            "slug": "area-from",
+            "text": "Area from:",
+            "value": "150m2"
+          },
+          {
+            "slug": "bedrooms-from",
+            "text": "Bedrooms:",
+            "value": "from 3"
+          },
+          {
+            "slug": "location",
+            "text": "Location:",
+            "value": "Mesa Geitonia"
+          }
+        ]
+      }
     },
     "details": {
       "showSection": true,
@@ -20,24 +49,10 @@
           "href": "https://goo.gl/maps/7Q1Q6Q5ZQ8Q2"
         }
       },
-      "about": [
-        {
-          "slug": "area-from",
-          "text": "Area from:",
-          "value": "150m2"
-        },
-        {
-          "slug": "bedrooms-from",
-          "text": "Bedrooms:",
-          "value": "from 3"
-        },
-        {
-          "slug": "energy-efficiency",
-          "text": "Energy Efficiency:",
-          "value": "A"
-        }
-      ],
-      "categories": ["Ready to move in", "Residence"],
+      "availabilityButton": {
+        "show": true,
+        "text": "See availability"
+      },
       "price": "From €605 000"
     },
     "sections": [
@@ -46,6 +61,16 @@
         "text": "Asgata Village overview",
         "title": "Unit Residence is a modern residential complex, nestled in the serene area of ​​Mesa Geitonia, Limassol. Located in the most sought-after neighborhood, it blends urban vibrancy with coastal serenity."
       },
+      {
+        "type": "gallery",
+        "images": [
+          "/images/projects/unit/galery-1.jpg",
+          "/images/projects/unit/galery-2.jpg",
+          "/images/projects/unit/galery-3.jpg",
+          "/images/projects/unit/galery-4.jpg"
+        ]
+      },
+
       {
         "type": "two-row-text",
         "firtsTitle": {
@@ -66,31 +91,10 @@
       },
       {
         "type": "download-files",
-        "title": "Download",
-        "links": [
-          {
-            "text": "Brochure",
-            "href": "/images/projects/unit/brochure.pdf"
-          },
-          {
-            "text": "Floor plans",
-            "href": "/images/projects/unit/floor-plans.pdf"
-          },
-          {
-            "text": "Tech specs",
-            "href": "/images/projects/unit/tech-specs.pdf"
-          }
-        ]
-      },
-      {
-        "type": "gallery",
-        "title": "Gallery",
-        "images": [
-          "/images/projects/unit/galery-1.jpg",
-          "/images/projects/unit/galery-2.jpg",
-          "/images/projects/unit/galery-3.jpg",
-          "/images/projects/unit/galery-4.jpg"
-        ]
+        "button": {
+          "text": "Download BROCHURE",
+          "href": "/images/projects/unit/floor-plans.pdf"
+        }
       },
       {
         "type": "features",

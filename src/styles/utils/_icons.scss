@@ -5,6 +5,10 @@
   margin-right: 0.1em;
   background: no-repeat center/contain;
 
+  &--white {
+    filter: invert(1);
+  }
+
   &--area {
     background-image: url("/images/icons/area-icon.svg");
   }
@@ -23,5 +27,13 @@
 
   &--download {
     background-image: url("/images/icons/download-icon.svg");
+  }
+
+  &--arrow-down {
+    background-image: url("/images/icons/arrow-down.svg");
+  }
+  
+  &--fire {
+    background-image: url("/images/icons/fire-icon.svg");
   }
 }

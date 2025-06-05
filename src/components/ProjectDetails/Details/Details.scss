@@ -2,18 +2,48 @@
   .details-section {
     padding-top: VW(20);
     padding-bottom: VW(10);
-    margin: 0 VW(20) 5vw;
-    border-bottom: VW(1) solid $c-black;
+    margin: 0 VW(20);
+    // border-bottom: VW(1) solid $c-black;
     position: sticky;
     top: VW(40);
 
-    &__wrapper {
-      height: VW(500);
+    @include forMobile {
+      padding-top: VW(20, $mobile);
+      padding-bottom: VW(5, $mobile);
+      margin: 0 VW(10, $mobile) 5vw;
+
       position: relative;
+
+      display: flex;
+      flex-direction: column;
+      gap: VW(15, $mobile);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: VW(-20);
+      right: VW(-20);
+      height: max(VW(1), 1px);
+      background-color: rgba(0, 0, 0, 0.2);
+
+      @include forMobile {
+        display: none;
+      }
+    }
+
+    &__wrapper {
+      height: VW(400);
+      position: relative;
+
+      @include forMobile {
+        height: auto;
+      }
     }
 
     .address {
-      grid-column: 1/4;
+      grid-column: 7/11;
       display: flex;
       flex-direction: column;
       gap: 0.4em;
@@ -37,12 +67,12 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
-      gap: .4em;
-      margin-bottom: .4em;
+      gap: 0.4em;
+      margin-bottom: 0.4em;
       grid-column: 10/13;
 
       &__item {
-        padding: .45em .6em .3em;
+        padding: 0.45em 0.6em 0.3em;
         background-color: #00000010;
         border-radius: 10vw;
 
@@ -54,11 +84,22 @@
     }
 
     .price {
-      position: absolute;
       height: 100%;
       display: flex;
       align-items: center;
-      transform: translateY(100%);
+      grid-column: span 3;
+
+      @include forMobile {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: VW(5, $mobile);
+      }
     }
-}
+
+    &__button {
+      // padding-right: VW(20);
+      // padding-left: VW(20);
+      justify-self: end;
+      grid-column: 11/13;
+    }
+  }
 }

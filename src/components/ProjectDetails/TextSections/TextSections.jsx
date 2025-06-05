@@ -7,7 +7,7 @@ export const TitleText = ({ data }) => {
   return (
     <section className="title-text container">
       <p className="title-text__text">{data?.text}</p>
-      <h1 className="title-text__title">{data?.title}</h1>
+      <h2 className="title-text__title">{data?.title}</h2>
     </section>
   );
 };

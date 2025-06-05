@@ -1,0 +1,115 @@
+.gallery {
+  // height: VW(700);
+  aspect-ratio: 16 / 8;
+  height: auto;
+  margin: VW(30) VW(20);
+  position: relative;
+  // overflow: hidden;
+
+  @include forMobile {
+    aspect-ratio: 16 / 12;
+    margin: VW(60, $mobile) VW(12, $mobile) VW(30, $mobile);
+  }
+
+  .slide {
+    width: 100%;
+    height: 100%;
+    height: auto;
+
+    position: absolute;
+    inset: 0;
+
+    &__image {
+      position: absolute;
+      inset: 0;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: VW(50);
+    height: VW(50);
+    backdrop-filter: blur(5vw);
+    background: url("/images/icons/slider_arrow.svg") no-repeat center;
+    background-size: contain;
+    border-radius: 50%;
+
+    transition: opacity 0.3s;
+
+    @include hover {
+      opacity: 0.8;
+    }
+
+    @include forMobile {
+      width: VW(40, $mobile);
+      height: VW(40, $mobile);
+    }
+
+    &--prev {
+      left: VW(25);
+
+      @include forMobile {
+        left: VW(10, $mobile);
+      }
+    }
+
+    &--next {
+      right: VW(25);
+      transform: translateY(-50%) rotate(180deg);
+
+      @include forMobile {
+        right: VW(10, $mobile);
+      }
+    }
+  }
+
+  .pagination {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 200%);
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    gap: VW(10);
+
+    @include forMobile {
+      gap: VW(5, $mobile);
+    }
+
+    &__dot {
+      width: VW(10);
+      height: VW(10);
+      background-color: $c-black;
+      border-radius: 50%;
+      display: inline-block;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+
+      @include forMobile {
+        width: VW(8, $mobile);
+        height: VW(8, $mobile);
+      }
+
+      &--active {
+        opacity: 1;
+      }
+    }
+  }
+}

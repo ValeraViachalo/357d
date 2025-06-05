@@ -1,8 +1,20 @@
 .download-section {
   display: flex;
-  padding: VW(20) 0;
-  margin: VW(20) VW(20) 0; 
-  border-top: VW(1) solid $c-black;
+  // padding: VW(20) 0;
+  margin: VW(20) VW(20) 0;
+  // border-top: VW(1) solid $c-black;
+
+  &__button {
+    grid-column: 3/11;
+    .icon {
+      transition: filter 0.3s 0.3s;
+    }
+    @include hover {
+      .icon {
+        filter: invert(0);
+      }
+    }
+  }
 
   &__list {
     display: flex;

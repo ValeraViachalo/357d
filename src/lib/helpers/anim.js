@@ -241,5 +241,35 @@ export const MenuAnim = {
         ease: ease.inOutCirc,
       },
     },
-  }
-}
+  },
+};
+
+const transitionLayer = {
+  ease: [0.08, 0.99, 0.37, 1],
+  duration: 1.5,
+};
+
+export const GalleryAnim = {
+  initial: (direction) => {
+    return {
+      zIndex: 2,
+      clipPath: "inset(0% 0% 0% 100%)",
+      x: "30%",
+      transition: transitionLayer,
+    };
+  },
+  animate: {
+    zIndex: 3,
+    clipPath: "inset(0% 0% 0% 0%)",
+    x: "0%",
+    transition: transitionLayer,
+  },
+  exit: (direction) => {
+    return {
+      zIndex: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      x: "-30%",
+      transition: transitionLayer,
+    };
+  },
+};

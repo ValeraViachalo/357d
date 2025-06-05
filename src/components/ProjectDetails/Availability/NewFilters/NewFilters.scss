@@ -1,0 +1,247 @@
+.aviability {
+  .filters {
+    position: relative;
+    z-index: 12;
+    margin-top: VW(20);
+
+    display: flex;
+    gap: VW(5);
+    justify-content: center;
+
+    button {
+      text-align: left;
+      outline: none;
+    }
+
+    .availability-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.1em;
+      grid-column: 1/3;
+      width: fit-content;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      margin-left: VW(10);
+
+      @include hover {
+        opacity: 0.6;
+      }
+
+      .toggle-checkbox {
+        display: block;
+        width: 0.3em;
+        height: 0.3em;
+        padding: 0.3em;
+        border-radius: 10vw;
+        border: VW(1) solid $c-black;
+
+        position: relative;
+
+        transform-origin: top;
+        scale: 0.9;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 70%;
+          height: 70%;
+          background-color: $c-black;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: opacity 0.3s ease;
+          opacity: 0;
+        }
+
+        &--active {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .filter {
+      &-wrapper {
+        position: relative;
+      }
+
+      &__button {
+        display: flex;
+        // align-items: center;
+        gap: .3em;
+        padding: VW(8) VW(12) VW(6);
+        border-radius: 10vw;
+
+        transition: background-color 0.3s ease;
+
+        @include hover {
+          background-color: rgba(#000000, 0.1);
+        }
+
+        &--active {
+          background-color: rgba(#000000, 0.1) !important;
+
+          .icon {
+            rotate: 180deg;
+          }
+        }
+
+        .icon {
+          scale: 0.8;
+          padding-top: .2em;
+          transition: rotate 0.5s $ease-in-out-expo;
+        }
+      }
+
+      &-body {
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        right: 0;
+        width: max-content;
+        min-width: 100%;
+        padding: VW(20);
+
+        background-color: $c-white;
+
+        display: flex;
+        flex-direction: column;
+        gap: VW(10);
+
+        opacity: 0;
+        transform: translate(-50%, 5%);
+        filter: blur(0.5vw);
+        pointer-events: none;
+
+        transition: opacity 0.3s ease, filter 0.5s ease,
+          transform 0.5s $ease-in-out-circ;
+
+        &--active {
+          opacity: 1;
+          filter: blur(0vw);
+          pointer-events: all;
+          transform: translate(-50%, 0%);
+
+        }
+
+        .link {
+          &--reset {
+            padding-bottom: VW(5);
+            border-bottom: VW(1) solid $g-20;
+          }
+        }
+      }
+    }
+  }
+
+  .link-radio {
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    border: 1.5px solid $c-black;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    position: relative;
+    background: #fff;
+
+    &-dot {
+      display: block;
+      width: 0.45em;
+      height: 0.45em;
+      border-radius: 50%;
+      background: transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $c-black;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+
+      &--active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .price-popup-inputs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: VW(10);
+    margin-bottom: VW(10);
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: VW(14);
+      color: $c-black;
+
+      .input {
+        margin-top: VW(4);
+        padding: VW(10) VW(30) VW(10) VW(10);
+        border: VW(1) solid $g-30;
+        width: VW(160);
+        background: #fff;
+        color: $c-black;
+        outline: none;
+        transition: border 0.2s;
+
+        &:focus {
+          border-color: $c-black;
+        }
+
+        &-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: VW(10);
+          width: VW(160);
+
+
+          .input-currency {
+            position: absolute;
+            right: 1%;
+            bottom: -10%;
+            top: -10%;
+            top: 50%;
+            transform: translateY(-40%);
+            background-color: $c-white;
+            padding: 0 VW(10);
+            border-left: VW(1) solid $g-30;
+
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+
+    .price-popup-sep {
+      font-size: VW(18);
+      color: $g-40;
+      margin: 0 VW(8);
+    }
+
+    .price-popup-clear {
+      margin-left: VW(10);
+      align-self: flex-end;
+      margin-top: VW(8);
+      background: none;
+      border: none;
+      color: $c-black;
+      font-size: VW(14);
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $g-40;
+      }
+    }
+  }
+}

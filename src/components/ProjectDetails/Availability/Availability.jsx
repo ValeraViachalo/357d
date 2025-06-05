@@ -4,9 +4,10 @@ import "./Availability.scss";
 import clsx from "clsx";
 import { LinkAnim } from "@/utils/LinkAnim/LinkAnim";
 import { TableHeader } from "./TableHeader/TableHeader";
-import { Filters } from "./Filters/Filters";
+// import { Filters } from "./Filters/Filters";
 import { AnimatePresence, motion } from "framer-motion";
 import { anim, ProjectsAnim } from "@/lib/helpers/anim";
+import { NewFilters } from "./NewFilters/NewFilters";
 
 export default function Availability({ data }) {
   const [projectsList, setProjectsList] = useState(data?.lists);
@@ -20,9 +21,18 @@ export default function Availability({ data }) {
   });
 
   return (
-    <section className="aviability container">
-      <h1 className="aviability__title">{data.title}</h1>
-      <Filters
+    <section className="aviability container" id="availability">
+      <div className="top">
+        <span className="aviability__title super-text">{data.title}</span>
+      </div>
+      {/* <Filters
+          data={data}
+          worksList={projectsList}
+          setWorksList={setProjectsList}
+          activeFilters={activeFilters}
+          setActiveFilters={setActiveFilters}
+        /> */}
+      <NewFilters
         data={data}
         worksList={projectsList}
         setWorksList={setProjectsList}
@@ -48,7 +58,7 @@ const Table = ({
   setActiveSort,
 }) => {
   return (
-    <div className="table" layout>
+    <div className="table">
       <TableHeader
         tableHeader={data?.tableHeader}
         projectsList={projectsList}
@@ -61,15 +71,24 @@ const Table = ({
           const id = `${projectsList.length}-${activeSort.value}-${activeSort.revert}--${index}`;
           return <Row key={id} data={data} />;
         })}
+        {data?.bottom.active && (
+          <div className="bottom table-grid">
+            <motion.h2>
+              <motion.span
+                {...anim(ProjectsAnim.card)}
+                key={`bottom-${projectsList.length}`}
+              >
+                {projectsList.length}{" "}
+              </motion.span>
+              {data?.bottom.unitsText}
+            </motion.h2>
+            <h2 className="bottom-right">
+              <span className="icon icon--fire"></span>
+              {data?.bottom.right}
+            </h2>
+          </div>
+        )}
       </AnimatePresence>
-      {data?.bottom.active && (
-        <div className="bottom table-grid">
-          <h2>
-            {data?.lists.length} {data?.bottom.unitsText}
-          </h2>
-          <h2 className="bottom-right">{data?.bottom.right}</h2>
-        </div>
-      )}
     </div>
   );
 };

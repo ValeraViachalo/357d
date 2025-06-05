@@ -8,10 +8,10 @@ import MapElement from "./Overview/MapElement/MapElement";
 export default function ProjectDetails() {
   return (
     <main className="project-details">
-      {/* <ProjectHero />
-      <Details /> */}
+      <ProjectHero />
+      <Details />
       <Sections />
-      {/* <WhyUs /> */}
+      <WhyUs />
     </main >
   );
 }

@@ -15,7 +15,7 @@ export default function ({ data }) {
     slideToClickedSlide: true,
     speed: 600,
 
-    slidesPerView: "auto",
+    slidesPerView: 1,
     centeredSlides: true,
     pagination: {
       clickable: true,
@@ -24,8 +24,7 @@ export default function ({ data }) {
   };
 
   return (
-    <section className="gallery">
-      <h1 className="container">{data?.title}</h1>
+    <section className="gallery container">
       <Swiper {...params}>
         {data?.images.map((image, index) => (
           <SwiperSlide key={index} className="gallery__slide">

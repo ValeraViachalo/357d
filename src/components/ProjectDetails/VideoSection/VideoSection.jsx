@@ -5,10 +5,11 @@ import './VideoSection.scss';
 
 export default function VideoSection({ data }) {
   return (
-    <section className="video-section container">
+    <section className="video-section container grid">
       <VideoPlayer
         url={data?.video?.url}
         preview={data?.video?.poster}
+        customClass='video-section__player'
       />
     </section>
   )
