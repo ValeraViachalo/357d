@@ -472,6 +472,16 @@
               "image": "/images/projects/unit/interest-2.jpg"
             },
             {
+              "name": "Private school1",
+              "slug": "private-school1",
+              "position": {
+                "lat": 34.691,
+                "lng": 33.061
+              },
+              "farness": "10-min drive",
+              "image": "/images/projects/unit/interest-2.jpg"
+            },
+            {
               "name": "Airport",
               "slug": "airport",
               "position": {
