@@ -12,7 +12,7 @@ export default function HeroHome() {
     <section className="hero container">
       <div className="top">
         <Logo className="hero__logo" />
-        <h1 className="hero__title upperCase">
+        <div className="hero__title upperCase">
           {/* <span className="hero__title--line">Estate</span> */}
           <AnimTitle
             titles={[
@@ -26,7 +26,7 @@ export default function HeroHome() {
             ]}
           />
           <span className="hero__title--line bold">TO BE PROUD OF</span>
-        </h1>
+        </div>
       </div>
       <div className="hero__video">
         <Content
@@ -50,7 +50,7 @@ const AnimTitle = ({ titles }) => {
   return (
     <div className="title-anim__wrapper">
       <AnimatePresence mode="popLayout" initial={false}>
-        <motion.h1
+        <motion.div
           className="title-anim"
           key={titles[activeIndex]}
           aria-label={titles[activeIndex]}
@@ -66,7 +66,7 @@ const AnimTitle = ({ titles }) => {
               {currL}
             </motion.span>
           ))}
-        </motion.h1>
+        </motion.div>
       </AnimatePresence>
     </div>
   );

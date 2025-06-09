@@ -1,6 +1,7 @@
 .home {
   .projects {
-    background-color: $g-10;
+    // background-color: $g-10;
+    background-color: $c-white;
     position: relative;
     z-index: 3;
     padding-top: VW(140);
@@ -86,7 +87,7 @@
           }
         }
 
-        .about {
+        .card-about {
           display: flex;
           // justify-content: space-between;
           gap: VW(70);

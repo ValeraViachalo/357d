@@ -3,9 +3,20 @@
   z-index: 1;
   overflow: hidden;
 
+  padding-top: VW(200);
+
+  @include forMobile {
+    padding-top: VW(60, $mobile);
+  }
+
+  .super-text {
+    display: block;
+    text-align: center;
+  }
+
   .list {
     row-gap: VW(120);
-    margin-top: VW(20);
+    margin-top: VW(120);
 
     @include forMobile {
       display: flex;

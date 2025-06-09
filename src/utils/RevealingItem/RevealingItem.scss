@@ -1,0 +1,49 @@
+.revealing-item {
+  padding: VW(15) 0 0;
+
+  border-bottom: VW(1) solid $g-50;
+
+  @include forMobile {
+    padding: VW(20, $mobile) 0 VW(10, $mobile);
+  }
+
+  &__active {
+    .icon {
+      transform: rotate(45deg);
+      transition: transform 0.5s 0.1s $ease-in-out-expo !important;
+    }
+  }
+
+  .head {
+    padding: 0 VW(10) VW(15) 0;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+    position: relative;
+    gap: VW(30);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @include hover {
+      opacity: 0.4;
+    }
+
+    @include forTablet {
+      padding: 0 VW(20, $tablet) VW(15, $tablet) 0;
+    }
+
+    .icon {
+      transition: transform 0.5s 0.3s $ease-in-out-expo;
+    }
+  }
+
+  .body {
+    transition: height 0.7s $ease-in-out-expo;
+    overflow: hidden;
+
+    &__content {
+      padding-right: VW(70);
+    }
+  }
+}

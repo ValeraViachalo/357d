@@ -30,7 +30,7 @@
 
           &--line {
             font-size: VW(92);
-            line-height: 100%;
+            line-height: 80%;
             letter-spacing: VW(-5);
 
             @include forMobile {
@@ -43,7 +43,7 @@
             position: absolute;
             width: 100%;
             font-size: VW(92);
-            line-height: 100%;
+            line-height: 90%;
 
             @include forMobile {
               font-size: VW(46, $mobile);
@@ -54,12 +54,12 @@
               display: flex;
               align-items: flex-start;
               width: 100%;
-              height: 1.1em;
+              height: VW(72);
               position: relative;
               overflow: hidden;
 
               @include forMobile {
-                height: 1em;
+                height: VW(46, $mobile);
               }
             }
           }
@@ -68,6 +68,8 @@
     }
 
     &__video {
+      margin-top: VW(20);
+
       @include forMobile {
         aspect-ratio: 3/5;
 

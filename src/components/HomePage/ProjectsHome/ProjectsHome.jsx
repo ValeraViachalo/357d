@@ -47,10 +47,10 @@ const ProjectCard = ({ project }) => {
         <h1 className="card__title">{project.title}</h1>
         <p>{project?.adress}</p>
 
-        <div className="about">
+        <div className="card-about">
           {project?.about.map((item, index) => (
-            <div className="about-item" key={index}>
-              <p className="about-item-top">
+            <div className="card-about-item" key={index}>
+              <p className="card-about-item-top">
                 <span className={`icon icon--${item.slug.split("-")[0]}`} />
                 {item.text}
               </p>
@@ -59,9 +59,11 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
         <div className="bottom">
-          <h2>
-            {project?.price.text} €{project?.price.value}
-          </h2>
+          {project?.price && (
+            <h2>
+              {project?.price.text} €{project?.price.value}
+            </h2>
+          )}
           <div className="bottom__button">
             <Link
               href={project.button?.href}
@@ -70,7 +72,10 @@ const ProjectCard = ({ project }) => {
                   project.button?.type === "not-available",
               })}
             >
-              <p className="button__text-wrapper upperCase" aria-label={project.button?.text}>
+              <p
+                className="button__text-wrapper upperCase"
+                aria-label={project.button?.text}
+              >
                 {project.button?.text &&
                   project.button?.text.split("").map((word, index) => (
                     <span

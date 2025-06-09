@@ -2,10 +2,14 @@
   .about {
     position: relative;
     z-index: 1;
-    margin-top: VW(20);
+    padding-top: VW(20);
+    padding-bottom: VW(20);
+    background-color: $g-10;
+
 
     @include forMobile {
-      margin-top: VW(10, $mobile);
+      padding-top: VW(10, $mobile);
+      padding-bottom: VW(10, $mobile);
     }
 
     .top {
@@ -29,10 +33,13 @@
 
         &__title {
           text-indent: VW(246);
-
+          text-transform: capitalize;
+          width: 93%;
+          
           @include forMobile {
             text-indent: VW(62, $mobile);
             font-size: VW(25, $mobile);
+            width: 100%;
           }
 
           .wrapper:nth-of-type(1) {

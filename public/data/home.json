@@ -49,7 +49,7 @@
       "title": "Projects",
       "list": [
         {
-          "images": ["/images/home/projects/1-1.jpg", "/images/home/projects/1-2.jpg"],
+          "images": ["/images/home/projects/1-1.webp", "/images/home/projects/1-2.webp"],
           "title": "Asgata Village",
           "adress": "104 Nahal Griva Digeni, Larnaca 6044, Cyprus",
           "categories": ["Coming soon", "Residence"],
@@ -65,10 +65,7 @@
               "value": "from 3"
             }
           ],
-          "price": {
-            "text": "From",
-            "value": "1050 000"
-          },
+          "price": false,
           "button": {
             "type": "not-available",
             "text": "More info is coming soon",
@@ -76,7 +73,7 @@
           }
         },
         {
-          "images": ["/images/home/projects/2-1.jpg"],
+          "images": ["/images/home/projects/2-1.webp"],
           "title": "Unit Residence",
           "adress": "104 Nahal Griva Digeni,  Limassol, Cyprus",
           "categories": ["In Development", "Residence"],
@@ -116,7 +113,7 @@
         "Renting out Real Estate",
         "Holding Company"
       ],
-      "content": "/images/home/services.jpg"
+      "content": "/images/home/services.webp"
     },
     "whyUs": {
       "title": "why 357d?",

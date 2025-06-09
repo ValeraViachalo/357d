@@ -76,11 +76,11 @@ export default function Footer() {
             {navigation.contacts?.socials.map((item, index) => (
               <Link
                 href={item.href}
-                text={item.text}
                 className="icon"
                 style={{ backgroundImage: `url(${item.icon})` }}
                 key={index + "--socials-contacts"}
                 target="_blank"
+                aria-label={item.text}
               />
             ))}
           </div>

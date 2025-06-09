@@ -10,7 +10,6 @@ export default function AboutHome() {
   const { about: data } = allData;
   const { top } = data;
   const aboutRef = useRef();
-  const [isActive, setIsActive] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: data && aboutRef,
@@ -23,10 +22,6 @@ export default function AboutHome() {
   return (
     <section className="about container" ref={aboutRef}>
       <motion.div className="top" style={{ y: ySection }}>
-        {/* <p className="about__text">{top.text}</p> */}
-        {/* <h1 className="about__title">
-          <ParagraphAnim text={top.title} isActive={true}/>
-        </h1> */}
         <h1 className="about__title">{top.title}</h1>
       </motion.div>
       <motion.div className="bottom" style={{ y: ySection }}>

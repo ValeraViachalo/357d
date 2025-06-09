@@ -1,22 +1,8 @@
 @import "./mixins";
 
-%h1 {
-  font-family: var(--pp-mori), sans-serif;
-  font-size: VW(65);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-  letter-spacing: normal;
-
-  @include forMobile {
-    font-size: VW(35, $mobile);
-    line-height: 110%;
-  }
-}
-
 .super-text {
   font-family: var(--pp-mori), sans-serif;
-  font-size: VW(140);
+  font-size: VW(100);
   line-height: 100%;
   font-weight: 700;
   text-transform: uppercase;
@@ -25,6 +11,20 @@
   @include forMobile {
     font-size: VW(70, $mobile);
     letter-spacing: VW(-4.2, $mobile);
+  }
+}
+
+%h1 {
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(40);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: normal;
+
+  @include forMobile {
+    font-size: VW(35, $mobile);
+    line-height: 110%;
   }
 }
 
