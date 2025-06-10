@@ -1,8 +1,7 @@
 export async function getFetchData(apiUrl) {
   try {
     const response = await fetch(apiUrl, {
-      cache: "no-store", // For dynamic data
-      // revalidate: 1000,
+      next: { revalidate: 120 }, // Revalidate every 2 minutes instead of no-store
     });
 
     if (!response.ok) {
@@ -12,6 +11,6 @@ export async function getFetchData(apiUrl) {
     return response.json();
   } catch (error) {
     console.error("Error fetching data:", error);
-    return {};
+    return {}; // Return empty object as fallback
   }
 }
