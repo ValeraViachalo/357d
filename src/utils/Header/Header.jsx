@@ -79,7 +79,9 @@ export default function Header() {
           <div className="right">
             {/* <LinkAnim href={localeHref} text={isGrePath ? "ENG" : "GRE"} /> */}
             <LangSwitch />
-            <Link href="/contact" className="contact-button upperCase">
+            <Link href="#contact" className="contact-button upperCase" 
+            data-scroll-anchor="#contact"
+            >
               {data.contact.name}
               <svg
                 width="14"
