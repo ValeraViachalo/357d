@@ -1,30 +1,25 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import "./Gallery.scss";
 import clsx from "clsx";
 
-const SLIDE_DURATION = 1.3; // seconds
+const SLIDE_DURATION = 0.5; // seconds
 const AUTO_SLIDE_DELAY = 3000; // ms
 
 const slideVariants = {
-  initial: (direction) => ({
-    // x: direction === "right" ? "10%" : "-10%",
-    zIndex: 1,
-    clipPath:
-      direction === "right" ? "inset(0% 0% 0% 100%)" : "inset(0% 100% 0% 0%)",
-  }),
-  animate: {
+  active: {
     x: 0,
+    opacity: 1,
+    filter: "blur(0vw)",
     zIndex: 2,
-    clipPath: "inset(0% 0% 0% 0%)",
     transition: { duration: SLIDE_DURATION, ease: [0.07, 0.5, 0.19, 1] },
   },
-  exit: (direction) => ({
-    // x: direction === "right" ? "-10%" : "10%",
+  inactive: (slideDirection) => ({
+    x: slideDirection === "right" ? "10%" : "-10%",
+    opacity: 0,
+    filter: "blur(.9vw)",
     zIndex: 1,
-    clipPath:
-      direction !== "right" ? "inset(0% 0% 0% 100%)" : "inset(0% 100% 0% 0%)",
     transition: { duration: SLIDE_DURATION, ease: [0.07, 0.5, 0.19, 1] },
   }),
 };
@@ -36,6 +31,22 @@ export default function Gallery({ data }) {
   const [isPaused, setIsPaused] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const autoSlideRef = useRef();
+
+  // Helper function to determine slide direction relative to active slide
+  const getSlideDirection = useCallback((slideIndex, activeIndex, totalSlides) => {
+    if (slideIndex === activeIndex) return "right"; // fallback for active slide
+    
+    // Calculate distances in both directions (accounting for circular nature)
+    const forwardDistance = (slideIndex - activeIndex + totalSlides) % totalSlides;
+    const backwardDistance = (activeIndex - slideIndex + totalSlides) % totalSlides;
+    
+    // Choose the shorter path to determine direction
+    if (forwardDistance <= backwardDistance) {
+      return "right"; // slide is ahead in sequence
+    } else {
+      return "left"; // slide is behind in sequence
+    }
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -56,7 +67,6 @@ export default function Gallery({ data }) {
   // Slide navigation
   const goToSlide = useCallback(
     (index, dir) => {
-      if (isAnimating) return; // Block if animating
       setDirection(dir);
       setActive((prev) => {
         if (index < 0) return images.length - 1;
@@ -78,24 +88,29 @@ export default function Gallery({ data }) {
     >
       {/* Slides */}
       <div className="slide">
-        <AnimatePresence initial={false} custom={direction}>
+        {images.map((image, index) => (
           <motion.div
-            key={active}
+            key={index}
             className="slide__image"
-            custom={direction}
             variants={slideVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            drag="x"
+            animate={active === index ? "active" : "inactive"}
+            custom={getSlideDirection(index, active, images.length)}
+            drag={active === index ? "x" : false}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.1}
             onDragEnd={handleDragEnd}
             onAnimationComplete={() => setIsAnimating(false)}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
           >
             <img
-              src={images[active]}
-              alt={`Slide ${active + 1}`}
+              src={image}
+              alt={`Slide ${index + 1}`}
               style={{
                 width: "100%",
                 height: "100%",
@@ -105,7 +120,7 @@ export default function Gallery({ data }) {
               draggable={false}
             />
           </motion.div>
-        </AnimatePresence>
+        ))}
       </div>
 
       {/* Controls */}

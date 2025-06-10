@@ -14,26 +14,27 @@
     cursor: pointer;
     transition: scale 0.5s $ease-in-out-expo, background-color 0.5s ease;
 
-    @include hover {
-      scale: 1.2;
-    }
-
-    &.active {
-      background-color: $c-black;
-      scale: 1.2;
-    }
-
     &-wrapper {
       position: relative;
 
       .active-marker {
         // width: VW(100);
-        width: 100px;
+        // width: 100px;
         display: flex;
         gap: VW(5);
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        position: absolute;
+        top: -100%;
+        left: -50%;
+        transform: translateX(-20%);
+        // transform: translate(-50%, -50%);
+        opacity: 0;
+        scale: 0.5;
+        transform-origin: left;
+        pointer-events: none;
+        transition: opacity 0.2s  ease, scale 0.5s  $ease-in-out-expo;
 
         .icon {
           // width: VW(50);
@@ -46,6 +47,17 @@
           // font-size: VW(14);
           font-size: 14px;
           text-align: center;
+          // position: absolute;
+        }
+      }
+
+      &--active {
+        .marker {
+          scale: 2;
+        }
+        .active-marker {
+          opacity: 1;
+          scale: 1;
         }
       }
     }

@@ -4,17 +4,17 @@
   height: auto;
   margin: VW(30) VW(20);
   position: relative;
-  // overflow: hidden;
-
+  
   @include forMobile {
     aspect-ratio: 16 / 12;
     margin: VW(60, $mobile) VW(12, $mobile) VW(30, $mobile);
   }
-
+  
   .slide {
     width: 100%;
     height: 100%;
     height: auto;
+    overflow: hidden;
 
     position: absolute;
     inset: 0;

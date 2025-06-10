@@ -9,6 +9,7 @@
 
   .title {
     position: relative;
+    width: 92%;
 
     @include forMobile {
       display: flex;
@@ -18,7 +19,6 @@
 
     &__text {
       position: absolute;
-      top: VW(7);
       width: VW(160);
 
       @include forMobile {

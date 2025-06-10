@@ -9,8 +9,8 @@ import WhyUs from "@/utils/WhyUs/WhyUs";
 export const generateMetadata = async () => generatePagesMetadata(URL_HOME);
 
 export default async function Home() {
-  const preparedData = await getFetchData(URL_HOME);
-  const data = useLanguageContent(preparedData, "en");
+  const data = await getFetchData(URL_HOME);
+  // const data = useLanguageContent(preparedData, "en");
 
   return (
     <DataProvider data={data}>

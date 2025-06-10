@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 export const TitleText = ({ data }) => {
   return (
     <section className="title-text container">
-      <p className="title-text__text">{data?.text}</p>
-      <h2 className="title-text__title">{data?.title}</h2>
+      <p className="title-text__text">{data?.title}</p>
+      <h2 className="title-text__title">{data?.text}</h2>
     </section>
   );
 };

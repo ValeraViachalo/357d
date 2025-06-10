@@ -1,6 +1,7 @@
 "use client";
 import { Logo } from "@/utils/Logo/Logo";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import "./ContactForm.scss";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,6 +9,8 @@ import { anim, ContactTitle } from "@/lib/helpers/anim";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import clsx from "clsx";
+import { URL_FORM_POST } from "@/lib/helpers/DataUrls";
+
 
 export const ContactForm = ({ data }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -35,19 +38,22 @@ export const ContactForm = ({ data }) => {
         message: values.message,
       };
 
-      // Use the server action directly instead of fetch
-      const result = await sendEmail(emailData);
+      // Send POST request using axios
+      const response = await axios.post(URL_FORM_POST, emailData);
 
-      if (result.success) {
+      if (response.status === 200 || response.status === 201) {
         console.log("Email sent successfully");
         setSubmitted(true);
         resetForm();
       } else {
-        console.error("Failed to send email:", result.error);
+        console.error("Failed to send email:", response.data);
         // You might want to show an error message to the user here
       }
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error(
+        "Error sending email:",
+        error.response?.data || error.message
+      );
       // Handle error (you might want to show an error message to the user)
     } finally {
       setSubmitting(false);
@@ -71,7 +77,7 @@ export const ContactForm = ({ data }) => {
           <div className="form-wrapper">
             {submitted && (
               <div className="form-success-message">
-                <h2 className="upperCase">
+                <h2>
                   {data.contact?.successTitle?.text}
                 </h2>
                 <p>{data.contact?.successTitle?.subtext}</p>
