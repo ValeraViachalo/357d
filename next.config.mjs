@@ -11,13 +11,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '3192216.twid.web.hosting-test.net',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: '3192216.twid.web.hosting-test.net',
+        hostname: '357d.twid.studio',
         port: '',
         pathname: '/**',
       },
