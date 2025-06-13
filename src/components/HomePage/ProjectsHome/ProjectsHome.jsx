@@ -59,7 +59,7 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
         <div className="bottom">
-          {project?.price && (
+          {project?.price.value && (
             <h2>
               {project?.price.text} €{project?.price.value}
             </h2>
