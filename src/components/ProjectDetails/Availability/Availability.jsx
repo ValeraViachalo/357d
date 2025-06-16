@@ -108,14 +108,14 @@ const Row = ({ data, ...rest }) => {
         <span className="shadow table-row__mobile-text">Type</span>
         {data?.type}
       </p>
-      <LinkAnim
+      {(data?.floorPlan?.href && data?.floorPlan?.text) &&(<LinkAnim
         text={data?.floorPlan?.text}
         href={data?.floorPlan?.href}
         download
         target="_blank"
         icon="/images/icons/download-icon.svg"
         data-hide-for-mobile--flex
-      />
+      />)}
 
       <p className="table-row__bedrooms">
         {data?.bedrooms.value}
@@ -133,10 +133,12 @@ const Row = ({ data, ...rest }) => {
         <span className="shadow table-row__mobile-text">Area</span>
         {data?.area.value} {data?.area.unit}
       </p>
-      <p className="table-row__price">
-        {data?.price.unit}
-        {data?.price.value}
-      </p>
+      {!(data?.price.value == 0 || data?.price.value) && (
+        <p className="table-row__price">
+          {data?.price.unit}
+          {data?.price.value}
+        </p>
+      )}
       <Button
         text={data?.floorPlan?.text}
         href={data?.floorPlan?.href}

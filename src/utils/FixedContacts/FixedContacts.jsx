@@ -1,10 +1,13 @@
 import React from "react";
 import "./FixedContacts.scss";
 import Link from "next/link";
+import clsx from "clsx";
 
-export default function FixedContacts({ data }) {
+export default function FixedContacts({ data, isNearFooter }) {
   return (
-    <div className="fixed-contacts">
+    <div className={clsx("fixed-contacts", {
+      "fixed-contacts--hidden": isNearFooter,
+    })}>
       {data?.map((item, index) => (
         <Link
           href={item.href}

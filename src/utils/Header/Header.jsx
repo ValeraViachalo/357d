@@ -17,6 +17,7 @@ import { AnimatePresence } from "framer-motion";
 export default function Header() {
   const [data, setData] = useState(null);
   const [isTopScroll, setIsTopScroll] = useState(true);
+  const [isNearFooter, setIsNearFooter] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const path = usePathname();
 
@@ -27,6 +28,16 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setIsTopScroll(window.scrollY < 20);
+
+      // Check if user is near footer
+      const footer = document.querySelector(".footer");
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Hide FixedContacts when footer is visible (with some offset)
+        setIsNearFooter(footerRect.top <= windowHeight + 100);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -79,8 +90,10 @@ export default function Header() {
           <div className="right">
             {/* <LinkAnim href={localeHref} text={isGrePath ? "ENG" : "GRE"} /> */}
             <LangSwitch />
-            <Link href="#contact" className="contact-button upperCase" 
-            data-scroll-anchor="#contact"
+            <Link
+              href="#contact"
+              className="contact-button upperCase"
+              data-scroll-anchor="#contact"
             >
               {data.contact.name}
               <svg
@@ -118,7 +131,7 @@ export default function Header() {
             <Menu data={data} menuActive={menuActive} setMenuActive={setMenuActive} />
           )}
         </AnimatePresence>
-        <FixedContacts data={data?.fixedContacts} />
+        <FixedContacts data={data?.fixedContacts} isNearFooter={isNearFooter} />
       </>
     )
   );

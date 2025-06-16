@@ -7,8 +7,25 @@
   right: VW(20);
   z-index: 1000;
 
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 0.5s ease, filter 0.5s ease,
+    transform 0.5s $ease-in-out-expo;
+  transform: translateX(0%);
+  filter: blur(0vw);
+
   @include forMobile {
-    display: none;
+    bottom: VW(10, $mobile);
+    right: VW(10, $mobile);
+    gap: VW(5, $mobile);
+    flex-direction: column;
+  }
+
+  &--hidden {
+    opacity: 0;
+    filter: blur(1vw);
+    pointer-events: none;
+    transform: translateX(50%);
   }
 
   .icon {
@@ -20,7 +37,12 @@
 
     @include hover {
       // opacity: .8;
-      filter: invert(.8);
+      filter: invert(0.8);
+    }
+
+    @include forMobile {
+      width: VW(40, $mobile);
+      height: VW(40, $mobile);
     }
   }
 }

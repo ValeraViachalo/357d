@@ -7,7 +7,7 @@
     overflow: hidden;
 
     @include forMobile {
-      aspect-ratio: 9/18;
+      aspect-ratio: 9/16;
       height: auto;
     }
 
@@ -18,7 +18,7 @@
 
       @include forMobile {
         inset: auto;
-        height: VW(500, $mobile);
+        height: VW(450, $mobile);
         bottom: 0;
         transform: none !important;
       }
