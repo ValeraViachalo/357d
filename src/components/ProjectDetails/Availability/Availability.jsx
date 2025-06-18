@@ -95,6 +95,29 @@ const Table = ({
 };
 
 const Row = ({ data, ...rest }) => {
+  // const [transitionOrigin, setTransitionOrigin] = useState('center');
+  
+  // const handleMouseEnter = (e) => {
+  //   const rowElement = e.currentTarget;
+  //   const rect = rowElement.getBoundingClientRect();
+  //   const mouseY = e.clientY;
+    
+  //   // Calculate relative position (0 = top, 1 = bottom of element)
+  //   const relativeY = (mouseY - rect.top) / rect.height;
+    
+  //   // Determine if mouse entered from top (relativeY < 0.5) or bottom
+  //   setTransitionOrigin(relativeY < 0.5 ? 'top' : 'bottom');
+  // };
+
+  // const handleMouseLeave = (e) => {
+  //   const rowElement = e.currentTarget;
+  //   const rect = rowElement.getBoundingClientRect();
+  //   const mouseY = e.clientY;
+    
+  //   // Calculate if mouse exited to top (mouseY < rect.top) or bottom
+  //   setTransitionOrigin(mouseY < rect.top ? 'top' : 'bottom');
+  // };
+
   return (
     <motion.div
       className={clsx("table-row table-grid", {
@@ -102,8 +125,16 @@ const Row = ({ data, ...rest }) => {
       })}
       {...rest}
       {...anim(ProjectsAnim.card)}
+      // onMouseEnter={handleMouseEnter}
+      // onMouseLeave={handleMouseLeave}
     >
-      <span className="background"></span>
+      <span className="background"
+      // style={{ 
+      //     transformOrigin: transitionOrigin,
+      //     // Reset transform origin when animation completes
+      //     onAnimationComplete: () => setTransitionOrigin('center')
+      //   }}
+      ></span>
       <p className="table-row__type">
         <span className="shadow table-row__mobile-text">Type</span>
         {data?.type}

@@ -75,6 +75,7 @@
         display: flex;
         align-items: center;
         gap: 0.4em;
+        width: fit-content;
 
         @include hover {
           .link {
@@ -107,6 +108,7 @@
           opacity: 0;
           transition: opacity 0.3s ease;
           text-wrap: nowrap;
+          pointer-events: none;
 
           @include forMobile {
             position: absolute;

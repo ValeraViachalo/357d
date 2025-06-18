@@ -1,38 +1,47 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import "./Overview.scss";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
-import { anim, ProjectsAnim } from "@/lib/helpers/anim";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import MapElement from "./MapElement/MapElement";
+import dynamic from 'next/dynamic';
 
-  const slideVariants = {
-    active: {
-      x: 0,
-      opacity: 1,
-      filter: "blur(0vw)",
-      zIndex: 2,
-      transition: { duration: 0.5, ease: [0.07, 0.5, 0.19, 1] },
-    },
-    inactive: (slideDirection) => ({
-      x: "10%",
-      opacity: 0,
-      filter: "blur(.9vw)",
-      zIndex: 1,
-      transition: { duration: 0.5, ease: [0.07, 0.5, 0.19, 1] },
-    }),
-  };
+const MapElement = dynamic(
+  () => import('./MapElement/MapElement'),
+  { 
+    ssr: false,
+    loading: () => <p>Loading map...</p>
+  }
+);
+
+const slideVariants = {
+  active: {
+    x: 0,
+    opacity: 1,
+    filter: "blur(0vw)",
+    zIndex: 2,
+    transition: { duration: 0.5, ease: [0.07, 0.5, 0.19, 1] },
+  },
+  inactive: (slideDirection) => ({
+    x: "10%",
+    opacity: 0,
+    filter: "blur(.9vw)",
+    zIndex: 1,
+    transition: { duration: 0.5, ease: [0.07, 0.5, 0.19, 1] },
+  }),
+};
 
 export const Overview = ({ data }) => {
-  const interests = data?.interests;
-  const [activeInterest, setActiveInterest] = useState({...interests.list[0], index: 0});
+  const interests = data?.interests || { list: [] };
+  const [activeInterest, setActiveInterest] = useState(
+    interests.list.length > 0 
+      ? {...interests.list[0], index: 0}
+      : null
+  );
   const mapRef = useRef(null);
 
   const handleInterestClick = (interest, index) => {
-    setActiveInterest({interest, index});
+    setActiveInterest({...interest, index});
 
-    // Add this check to prevent errors
     if (mapRef.current) {
       try {
         mapRef.current.handleMarkerClick(interest);
@@ -42,6 +51,10 @@ export const Overview = ({ data }) => {
     }
   };
 
+  // Handle case where interests.list is empty
+  if (!activeInterest && interests.list.length > 0) {
+    setActiveInterest({...interests.list[0], index: 0});
+  }
 
   return (
     <section className="overview">
@@ -58,7 +71,7 @@ export const Overview = ({ data }) => {
                 <div
                   key={index}
                   className={clsx("link__wrapper", {
-                    "link__wrapper--active": activeInterest.slug === link.slug,
+                    "link__wrapper--active": activeInterest?.slug === link.slug,
                   })}
                 >
                   <button
@@ -77,28 +90,30 @@ export const Overview = ({ data }) => {
               {interests.list.map((interest, index) => (
                 <motion.div
                   className={clsx("image", {
-                    "image--active": activeInterest.slug === interest.slug,
+                    "image--active": activeInterest?.slug === interest.slug,
                   })}
                   key={index}
                   variants={slideVariants}
-                  animate={activeInterest.slug === interest.slug ? "active" : "inactive"}
+                  animate={activeInterest?.slug === interest.slug ? "active" : "inactive"}
                 >
                   <Image
                     src={interest.image}
-                    alt={interest.name}
+                    alt={interest.name || "Interest Image"}
                     fill
                     style={{ objectFit: "cover" }}
                   />
                 </motion.div>
               ))}
             </div>
-            <MapElement
-              ref={mapRef}
-              mainMarker={interests.main}
-              pointsOfInterest={interests.list}
-              activeMarker={activeInterest}
-              setActiveMarker={setActiveInterest}
-            />
+            {interests.list.length > 0 && (
+              <MapElement
+                ref={mapRef}
+                mainMarker={interests.main}
+                pointsOfInterest={interests.list}
+                activeMarker={activeInterest}
+                setActiveMarker={setActiveInterest}
+              />
+            )}
           </div>
         </div>
       </div>

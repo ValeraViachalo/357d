@@ -219,10 +219,10 @@ export const ContactForm = ({ data }) => {
       </Formik>
       <div className="bottom">
         <div className="bottom__title">
-          <p>
+          <div>
             <span>{data.title.top}</span>
             <AnimTitle titles={data.title.middle} />
-          </p>
+          </div>
           <span>{data.title.bottom}</span>
         </div>
         <Logo className="contact-form__logo" />

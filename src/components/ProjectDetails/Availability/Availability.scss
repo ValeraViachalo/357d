@@ -72,9 +72,6 @@
       z-index: 2;
 
       @include forMobile {
-        // display: flex;
-        // flex-direction: column;
-        // gap: VW(10);
         padding: VW(20, $mobile) VW(10, $mobile);
         background-color: $g-20;
         border-bottom: none;
@@ -129,7 +126,6 @@
       &__price {
         @include forMobile {
           grid-column: 2/3;
-          // grid-row: 3/4;
           font-size: VW(25, $mobile);
         }
       }
@@ -145,14 +141,13 @@
         content: "";
         display: block;
         clear: both;
-        transition: transform 0.3s $ease-in-out-expo, opacity 0.3s;
+        transition: transform 0.3s, opacity 0.3s;
         background-color: $g-40;
         position: absolute;
         z-index: -1;
         inset: 0 VW(-20);
-        // transform: scaleY(0);
         opacity: 0;
-        transform-origin: top;
+        // transform: scaleY(0);
       }
 
       @include hover {

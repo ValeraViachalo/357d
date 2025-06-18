@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useCallback, useEffect, useImperativeHandle, forwardRef } from "react";
+import React, { useRef, useCallback, useEffect, useImperativeHandle, forwardRef, useState } from "react";
 import { LoadScript, GoogleMap, OverlayView } from "@react-google-maps/api";
 import "./MapElement.scss";
 import { mapStyles } from "./mapStyles";
@@ -18,84 +18,56 @@ const MapElement = forwardRef(({
   activeMarker,
   setActiveMarker,
 }, ref) => {
-  // Internal ref for map instance
   const mapInstanceRef = useRef(null);
-  const animationTimeoutRef = useRef(null);
-  
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const animationRef = useRef(null);
+
   const handleMarkerClick = useCallback((poi) => {
-    // Clear any existing animation timeout
-    if (animationTimeoutRef.current) {
-      clearTimeout(animationTimeoutRef.current);
+    if (!mapInstanceRef.current || !poi?.position) return;
+
+    // Cancel any ongoing animation
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
     }
 
-    // Set the active marker first
     setActiveMarker(poi);
 
-    // Center the map on the clicked POI marker with smooth animation
-    if (mapInstanceRef.current && poi && poi.position) {
-      try {
-        // Convert position to proper LatLng format with validation
-        const position = {
-          lat: Number(poi.position.lat),
-          lng: Number(poi.position.lng)
-        };
+    const position = {
+      lat: Number(poi.position.lat),
+      lng: Number(poi.position.lng)
+    };
 
-        // Validate coordinates are finite numbers
-        if (!isFinite(position.lat) || !isFinite(position.lng)) {
-          console.error("Invalid coordinates for POI:", poi.name, poi.position);
-          return;
-        }
-
-        console.log("Centering map on POI:", poi.name, position); // Debug log
-
-        // Get current zoom level - with safety check
-        const currentZoom = mapInstanceRef.current.getZoom() || 15;
-        const targetZoom = Math.max(16, currentZoom); // Ensure we zoom in, not out
-
-        // Use Google Maps built-in smooth pan to the POI position
-        mapInstanceRef.current.panTo(position);
-        
-        // Set zoom with smooth transition after pan completes
-        // Use a shorter delay and ensure cleanup
-        animationTimeoutRef.current = setTimeout(() => {
-          if (mapInstanceRef.current) {
-            mapInstanceRef.current.setZoom(targetZoom);
-          }
-          animationTimeoutRef.current = null;
-        }, 200);
-
-      } catch (error) {
-        console.error("Error animating map to POI:", poi.name, error);
-      }
-    } else {
-      console.error("Missing map instance or POI data:", { mapInstance: !!mapInstanceRef.current, poi, position: poi?.position });
+    if (!isFinite(position.lat) || !isFinite(position.lng)) {
+      console.error("Invalid coordinates for POI:", poi.name, poi.position);
+      return;
     }
+
+    // Smooth pan and zoom to the position
+    mapInstanceRef.current.panTo(position);
+    mapInstanceRef.current.setZoom(16);
   }, [setActiveMarker]);
 
-  // Cleanup timeout on unmount
+  // Center and zoom to active marker when it changes
   useEffect(() => {
-    return () => {
-      if (animationTimeoutRef.current) {
-        clearTimeout(animationTimeoutRef.current);
-      }
-    };
-  }, []);
+    if (mapLoaded && activeMarker && mapInstanceRef.current) {
+      handleMarkerClick(activeMarker);
+    }
+  }, [activeMarker, mapLoaded, handleMarkerClick]);
 
-  // Store map instance when loaded
   const onLoad = useCallback((map) => {
     mapInstanceRef.current = map;
-    
-    // Set initial bounds to show all markers if there are multiple POIs
-    if (pointsOfInterest.length > 1) {
+    setMapLoaded(true);
+
+    if (pointsOfInterest.length > 0) {
       const bounds = new window.google.maps.LatLngBounds();
       
-      // Add main marker to bounds
+      // Include main marker
       bounds.extend({
         lat: Number(mainMarker.position.lat),
         lng: Number(mainMarker.position.lng)
       });
       
-      // Add all POI markers to bounds
+      // Include all POIs
       pointsOfInterest.forEach(poi => {
         const position = {
           lat: Number(poi.position.lat),
@@ -106,27 +78,17 @@ const MapElement = forwardRef(({
         }
       });
       
-      // Fit map to show all markers with some padding
+      // Fit bounds with padding
       map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 });
     }
   }, [pointsOfInterest, mainMarker]);
 
-  // Handle map idle event to ensure smooth interactions
-  const onIdle = useCallback(() => {
-    // Map has finished moving, you can add any post-animation logic here
-  }, []);
-
-  // Expose methods to parent component through the forwarded ref
   useImperativeHandle(ref, () => ({
     handleMarkerClick,
-    // Also provide direct access to the map if needed
     getMap: () => mapInstanceRef.current,
-    // Method to programmatically center on a POI
     centerOnPOI: (poiSlug) => {
       const poi = pointsOfInterest.find(p => p.slug === poiSlug);
-      if (poi) {
-        handleMarkerClick(poi);
-      }
+      if (poi) handleMarkerClick(poi);
     }
   }), [handleMarkerClick, pointsOfInterest]);
 
@@ -137,89 +99,89 @@ const MapElement = forwardRef(({
 
   return (
     <div className="map-container">
-      <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={mainMarkerPosition}
-          zoom={15}
-          onLoad={onLoad}
-          onIdle={onIdle}
-          options={{
-            styles: mapStyles,
-            disableDefaultUI: true,
-            zoomControl: true,
-            minZoom: 12,
-            maxZoom: 18,
-            scrollwheel: true,
-            gestureHandling: "cooperative",
-            // Smooth zoom and pan animations
-            animation: window.google?.maps?.Animation?.BOUNCE,
-            // Optimize performance
-            optimized: true,
-          }}
-        >
-          {pointsOfInterest.map((poi) => {
-            // Ensure coordinates are valid numbers
-            const position = {
-              lat: Number(poi.position.lat),
-              lng: Number(poi.position.lng)
-            };
-
-            // Skip rendering if coordinates are invalid
-            if (!isFinite(position.lat) || !isFinite(position.lng)) {
-              console.warn("Skipping POI with invalid coordinates:", poi.name, poi.position);
-              return null;
-            }
-
-            return (
-              <OverlayView
-                key={poi.slug}
-                position={position}
-                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                getPixelPositionOffset={(width, height) => ({
-                  x: -(width / 2),
-                  y: -(height / 2),
-                })}
-              >
-                <div className={clsx("marker-wrapper", {
-                  "marker-wrapper--active": activeMarker?.slug === poi.slug,
-                })}>
-                  <div
-                    className="marker" 
-                    onClick={() => handleMarkerClick(poi)}
-                    style={{ cursor: 'pointer' }}
-                  ></div>
-                  <div className="active-marker">
-                    <Image
-                      src={"/images/icons/interests/business-hub.svg"}
-                      width={42}
-                      height={42}
-                      alt=""
-                      className="icon"
-                    />
-                    <p>{poi.name}</p>
-                  </div>
-                </div>
-              </OverlayView>
-            );
-          })}
-          <OverlayView
-            position={mainMarkerPosition}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-            getPixelPositionOffset={(width, height) => ({
-              x: -(width / 2),
-              y: -(height / 2),
-            })}
+      <LoadScript 
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+        onLoad={() => setMapLoaded(true)}
+      >
+        {mapLoaded && (
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={mainMarkerPosition}
+            zoom={15}
+            onLoad={onLoad}
+            options={{
+              styles: mapStyles,
+              disableDefaultUI: true,
+              zoomControl: true,
+              minZoom: 14,
+              maxZoom: 18,
+              scrollwheel: false,
+              gestureHandling: "cooperative",
+              fullscreenControl: false,
+              streetViewControl: false,
+              mapTypeControl: false,
+              clickableIcons: false,
+            }}
           >
-            <ApartmentIcon imageUrl={mainMarker.image} />
-          </OverlayView>
-        </GoogleMap>
+            {pointsOfInterest.map((poi) => {
+              const position = {
+                lat: Number(poi.position.lat),
+                lng: Number(poi.position.lng)
+              };
+
+              if (!isFinite(position.lat) || !isFinite(position.lng)) {
+                return null;
+              }
+
+              return (
+                <OverlayView
+                  key={poi.slug}
+                  position={position}
+                  mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                  getPixelPositionOffset={(width, height) => ({
+                    x: -(width / 2),
+                    y: -(height / 2),
+                  })}
+                >
+                  <div 
+                    className={clsx("marker-wrapper", {
+                      "marker-wrapper--active": activeMarker?.slug === poi.slug,
+                    })}
+                    onClick={() => handleMarkerClick(poi)}
+                  >
+                    <div className="marker" />
+                    <div className="active-marker">
+                      <Image
+                        src={"/images/icons/interests/business-hub.svg"}
+                        width={42}
+                        height={42}
+                        alt={poi.name}
+                        className="icon"
+                      />
+                      <p>{poi.name}</p>
+                    </div>
+                  </div>
+                </OverlayView>
+              );
+            })}
+            
+            <OverlayView
+              position={mainMarkerPosition}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+              getPixelPositionOffset={(width, height) => ({
+                x: -(width / 2),
+                y: -(height / 2),
+              })}
+            >
+              <ApartmentIcon imageUrl={mainMarker.image} />
+            </OverlayView>
+          </GoogleMap>
+        )}
       </LoadScript>
     </div>
   );
 });
 
-// Add a display name for better debugging
 MapElement.displayName = 'MapElement';
 
 export default MapElement;
