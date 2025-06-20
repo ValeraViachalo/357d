@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useCallback, useEffect, useImperativeHandle, forwardRef, useState } from "react";
-import { LoadScript, GoogleMap, OverlayView } from "@react-google-maps/api";
+import { GoogleMap, OverlayView, useJsApiLoader } from "@react-google-maps/api";
 import "./MapElement.scss";
 import { mapStyles } from "./mapStyles";
 import { ApartmentIcon } from "./ApartmentIcon";
@@ -19,8 +19,12 @@ const MapElement = forwardRef(({
   setActiveMarker,
 }, ref) => {
   const mapInstanceRef = useRef(null);
-  const [mapLoaded, setMapLoaded] = useState(false);
   const animationRef = useRef(null);
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  });
 
   const handleMarkerClick = useCallback((poi) => {
     if (!mapInstanceRef.current || !poi?.position) return;
@@ -49,14 +53,13 @@ const MapElement = forwardRef(({
 
   // Center and zoom to active marker when it changes
   useEffect(() => {
-    if (mapLoaded && activeMarker && mapInstanceRef.current) {
+    if (isLoaded && activeMarker && mapInstanceRef.current) {
       handleMarkerClick(activeMarker);
     }
-  }, [activeMarker, mapLoaded, handleMarkerClick]);
+  }, [activeMarker, isLoaded, handleMarkerClick]);
 
   const onLoad = useCallback((map) => {
     mapInstanceRef.current = map;
-    setMapLoaded(true);
 
     if (pointsOfInterest.length > 0) {
       const bounds = new window.google.maps.LatLngBounds();
@@ -97,87 +100,88 @@ const MapElement = forwardRef(({
     lng: Number(mainMarker.position.lng),
   };
 
+  if (loadError) {
+    return <div>Error loading Google Maps</div>;
+  }
+
+  if (!isLoaded) {
+    return <div>Loading Google Maps...</div>;
+  }
+
   return (
     <div className="map-container">
-      <LoadScript 
-        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-        onLoad={() => setMapLoaded(true)}
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={mainMarkerPosition}
+        zoom={15}
+        onLoad={onLoad}
+        options={{
+          styles: mapStyles,
+          disableDefaultUI: true,
+          zoomControl: true,
+          minZoom: 14,
+          maxZoom: 18,
+          scrollwheel: false,
+          gestureHandling: "cooperative",
+          fullscreenControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          clickableIcons: false,
+        }}
       >
-        {mapLoaded && (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={mainMarkerPosition}
-            zoom={15}
-            onLoad={onLoad}
-            options={{
-              styles: mapStyles,
-              disableDefaultUI: true,
-              zoomControl: true,
-              minZoom: 14,
-              maxZoom: 18,
-              scrollwheel: false,
-              gestureHandling: "cooperative",
-              fullscreenControl: false,
-              streetViewControl: false,
-              mapTypeControl: false,
-              clickableIcons: false,
-            }}
-          >
-            {pointsOfInterest.map((poi) => {
-              const position = {
-                lat: Number(poi.position.lat),
-                lng: Number(poi.position.lng)
-              };
+        {pointsOfInterest.map((poi) => {
+          const position = {
+            lat: Number(poi.position.lat),
+            lng: Number(poi.position.lng)
+          };
 
-              if (!isFinite(position.lat) || !isFinite(position.lng)) {
-                return null;
-              }
+          if (!isFinite(position.lat) || !isFinite(position.lng)) {
+            return null;
+          }
 
-              return (
-                <OverlayView
-                  key={poi.slug}
-                  position={position}
-                  mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                  getPixelPositionOffset={(width, height) => ({
-                    x: -(width / 2),
-                    y: -(height / 2),
-                  })}
-                >
-                  <div 
-                    className={clsx("marker-wrapper", {
-                      "marker-wrapper--active": activeMarker?.slug === poi.slug,
-                    })}
-                    onClick={() => handleMarkerClick(poi)}
-                  >
-                    <div className="marker" />
-                    <div className="active-marker">
-                      <Image
-                        src={"/images/icons/interests/business-hub.svg"}
-                        width={42}
-                        height={42}
-                        alt={poi.name}
-                        className="icon"
-                      />
-                      <p>{poi.name}</p>
-                    </div>
-                  </div>
-                </OverlayView>
-              );
-            })}
-            
+          return (
             <OverlayView
-              position={mainMarkerPosition}
+              key={poi.slug}
+              position={position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
               getPixelPositionOffset={(width, height) => ({
                 x: -(width / 2),
                 y: -(height / 2),
               })}
             >
-              <ApartmentIcon imageUrl={mainMarker.image} />
+              <div 
+                className={clsx("marker-wrapper", {
+                  "marker-wrapper--active": activeMarker?.slug === poi.slug,
+                })}
+                onClick={() => handleMarkerClick(poi)}
+              >
+                <div className="marker" />
+                <div className="active-marker">
+                  <Image
+                    src={"/images/icons/interests/business-hub.svg"}
+                    width={42}
+                    height={42}
+                    alt={poi.name}
+                    className="icon"
+                  />
+                  <p>{poi.name}</p>
+                </div>
+              </div>
             </OverlayView>
-          </GoogleMap>
-        )}
-      </LoadScript>
+          );
+        })}
+        
+        <OverlayView
+          position={mainMarkerPosition}
+          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          getPixelPositionOffset={(width, height) => ({
+            x: -(width / 2),
+            y: -(height / 2),
+          })}
+        >
+          <ApartmentIcon imageUrl={mainMarker.image} />
+        </OverlayView>
+      </GoogleMap>
     </div>
   );
 });
